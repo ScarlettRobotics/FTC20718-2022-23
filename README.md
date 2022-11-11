@@ -1,9 +1,3 @@
-# Scarlett Robotics FTC 2022/23 Code Repo
-<br>
-<br>
-
-## Below is from the FTC readme included in the template:
-
 ## NOTICE
 
 This repository contains the public FTC SDK for the Freight Frenzy (2021-2022) competition season.

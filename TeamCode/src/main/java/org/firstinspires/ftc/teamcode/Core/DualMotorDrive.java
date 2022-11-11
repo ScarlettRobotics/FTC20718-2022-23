@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 @TeleOp
-public class TriMotorDrive {
+public class DualMotorDrive {
     //private fields
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;
@@ -18,7 +18,6 @@ public class TriMotorDrive {
 
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
-        centerMotor = hardwareMap.get(DcMotor.class, "center_motor");
 
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -37,7 +36,7 @@ public class TriMotorDrive {
      * @param leftPower - power sent to the left motor
      * @param rightPower - power to the right motor
      */
-    public void setPowers(double leftPower, double rightPower, double centerPower){
+    public void setPowers(double leftPower, double rightPower){
         double largest = 1.0;
 
         largest = Math.max(largest, Math.abs(leftPower));
@@ -46,20 +45,13 @@ public class TriMotorDrive {
         leftMotor.setPower(leftPower / largest);
         rightMotor.setPower(rightPower / largest);
 
-        setCenterPower(centerPower);
     }
 
     /** setCenterPower
      *  helper function. Cleans up the setPowersFunction
      * @param centerPower - Power sent to the center motor. Ensures the maximum range is -1 to 1.
      */
-    private void setCenterPower(double centerPower){
-        double largest = 1.0;
-        largest = Math.max(largest, Math.abs(centerPower));
 
-        centerMotor.setPower((centerPower / largest));
-
-    }
 
 
 }

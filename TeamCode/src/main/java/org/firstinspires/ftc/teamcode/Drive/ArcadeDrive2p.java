@@ -4,13 +4,12 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Core.ClawCore;
-import org.firstinspires.ftc.teamcode.Core.TriMotorDrive;
+import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
 
 
-/** GenericOpMode 2 player
+/** ArcadeDrive 2 Player
  * Designed for driving to be on controller 1, upper systems on controller 2.
- * Generic OpMode to be used as the starting point for the robot code. Ideally, this should be modified and
- * eventually deprecated. Function using tank drive
+ * Arcade driving, similar to playing a racing game.
  */
 
 @TeleOp
@@ -21,7 +20,7 @@ public class ArcadeDrive2p extends OpMode {
 
     private Servo rightClaw = null;
 
-    TriMotorDrive drive = new TriMotorDrive();
+    DualMotorDrive drive = new DualMotorDrive();
     ClawCore claw = new ClawCore();
 
     @Override
@@ -41,20 +40,12 @@ public class ArcadeDrive2p extends OpMode {
         //DriveTrain
         double forward = -gamepad1.left_stick_y;
         double right = gamepad1.left_stick_x;
-        double center = 0;
+
         telemetry.addData("Stick X:", forward);
         telemetry.addData("Stick Y:", right);
 
-        if (gamepad1.left_bumper) {
-            center = - 1;
-        } else if (gamepad1.right_bumper){
-            center = 1;
-        } else {
-            center = 0;
-        }
-        telemetry.addData("Center Wheel", center);
 
-        drive.setPowers(forward + right, forward - right, center);
+        drive.setPowers(forward + right, forward - right);
 
 
         //Claw

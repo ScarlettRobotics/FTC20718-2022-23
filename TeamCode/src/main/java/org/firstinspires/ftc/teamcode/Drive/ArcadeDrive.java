@@ -49,9 +49,7 @@ public class ArcadeDrive extends OpMode {
 
         //Claw
         if (gamepad1.a){
-            claw.clawOpen();
-        } else if (gamepad1.b) {
-            claw.clawClose();
+            claw.clawToggle();
         }
 
         //Slide

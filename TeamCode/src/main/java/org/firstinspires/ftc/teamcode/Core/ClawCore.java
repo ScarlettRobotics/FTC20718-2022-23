@@ -19,6 +19,13 @@ public class ClawCore {
         tem.addData("Claw Right POS:", rightClaw.getPosition());
     }
 
+    public void clawToggle(){
+        if (leftClaw.getPosition() != 0.6 && rightClaw.getPosition() != 0.2) {
+            clawClose();
+        } else {
+            clawOpen();
+        }
+    }
     public void clawOpen(){
         leftClaw.setPosition(0.3);
         rightClaw.setPosition(0.6);

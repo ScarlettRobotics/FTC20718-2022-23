@@ -34,10 +34,8 @@ public class TankDrive extends OpMode {
 
 
         //Claw
-        if (gamepad1.a){
-            claw.clawOpen();
-        } else if (gamepad1.b) {
-            claw.clawClose();
+        if (gamepad1.a) {
+            claw.clawToggle();
         }
 
         //Slide

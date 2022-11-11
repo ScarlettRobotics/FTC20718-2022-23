@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.Drive;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 
@@ -28,7 +27,7 @@ public class GenericOpMode extends OpMode {
 
 
         //Here you will want to initialize basic objects for the robot (i.e drive train).
-        driveMotorMaps motors = new driveMotorMaps();
+        TriMotorDrive motors = new TriMotorDrive();
 
         //Claw
         leftClaw = hardwareMap.get(Servo.class, "claw_left");

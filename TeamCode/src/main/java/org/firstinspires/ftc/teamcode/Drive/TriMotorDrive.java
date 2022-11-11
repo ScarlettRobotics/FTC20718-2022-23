@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 @TeleOp
-public class driveMotorMaps {
+public class TriMotorDrive {
     //private fields
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;

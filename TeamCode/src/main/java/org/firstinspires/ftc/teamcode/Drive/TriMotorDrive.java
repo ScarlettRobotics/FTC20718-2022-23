@@ -37,7 +37,7 @@ public class TriMotorDrive {
      * @param leftPower - power sent to the left motor
      * @param rightPower - power to the right motor
      */
-    public void setPowers(double leftPower, double rightPower){
+    public void setSidePowers(double leftPower, double rightPower, double centerPower){
         double largest = 1.0;
 
         largest = Math.max(largest, Math.abs(leftPower));
@@ -45,6 +45,20 @@ public class TriMotorDrive {
 
         leftMotor.setPower(leftPower / largest);
         rightMotor.setPower(rightPower / largest);
+
+        setCenterPower(centerPower);
+    }
+
+    /** setCenterPower
+     *
+     * @param centerPower - Power sent to the center motor. Ensures the maximum range is -1 to 1.
+     */
+    public void setCenterPower(double centerPower){
+        double largest = 1.0;
+        largest = Math.max(largest, Math.abs(centerPower));
+
+        centerMotor.setPower((centerPower / largest));
+
     }
 
 

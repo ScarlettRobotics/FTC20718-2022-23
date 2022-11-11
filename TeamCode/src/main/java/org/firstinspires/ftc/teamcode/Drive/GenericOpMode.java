@@ -7,8 +7,10 @@ import org.firstinspires.ftc.teamcode.Core.TriMotorDrive;
 
 
 /** GenericOpMode
+ * Author(s): @Samuel-Trepac @aidandriscoll
  * Generic OpMode to be used as the starting point for the robot code. Ideally, this should be modified and
- * eventually deprecated. Uses Arcade Drive.
+ * eventually deprecated.
+ * OPMode refers to human-driver operated driving
  */
 
 @TeleOp
@@ -19,12 +21,14 @@ public class GenericOpMode extends OpMode {
 
     private Servo rightClaw = null;
 
-    TriMotorDrive drive = new TriMotorDrive();
-
     @Override
     public void init() { //INIT - When OpMode is init but not Started
         telemetry.addData("STATUS:", "Initialized"); // the FTC equivalent to println()
         telemetry.addData("FTC Team #", "20718");
+
+
+        //Here you will want to initialize basic objects for the robot (i.e drive train).
+        TriMotorDrive motors = new TriMotorDrive();
 
         //Claw
         leftClaw = hardwareMap.get(Servo.class, "claw_left");
@@ -51,20 +55,6 @@ public class GenericOpMode extends OpMode {
             leftClaw.setPosition(0.6);
             rightClaw.setPosition(0.2);
         }
-
-        double forward = -gamepad1.left_stick_y;
-        double right = gamepad1.left_stick_x;
-        double center = 0;
-
-        if (gamepad1.left_bumper) {
-            center = - 1;
-        } else if (gamepad1.right_bumper){
-            center = 1;
-        } else {
-            center = 0;
-        }
-
-        drive.setPowers(forward + right, forward - right, center);
 
     }
 }

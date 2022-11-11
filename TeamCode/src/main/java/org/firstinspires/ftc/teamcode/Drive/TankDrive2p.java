@@ -6,12 +6,13 @@ import org.firstinspires.ftc.teamcode.Core.ClawCore;
 import org.firstinspires.ftc.teamcode.Core.TriMotorDrive;
 
 
-/** TankDrive
+/** TankDrive 2 Player
+ *  Designed for driving to be on controller 1, upper systems on controller 2.
  *  Tank drive. left stick controls left motor, right stick controls right motor.
  *  Strafing is done with the bumpers.
  */
 @TeleOp
-public class TankDrive extends OpMode {
+public class TankDrive2p extends OpMode {
     TriMotorDrive drive = new TriMotorDrive();
     ClawCore claw = new ClawCore();
 
@@ -44,13 +45,13 @@ public class TankDrive extends OpMode {
 
 
         //Claw
-        if (gamepad1.a){
+        if (gamepad2.a){
             claw.clawOpen();
-        } else if (gamepad1.b) {
+        } else if (gamepad2.b) {
             claw.clawClose();
         }
 
         //Slide
-        //Still to implement
+        //Still to implements
     }
 }

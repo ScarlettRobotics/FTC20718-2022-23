@@ -16,12 +16,6 @@ import com.qualcomm.robotcore.hardware.Servo;
 @TeleOp
 public class GenericOpMode extends OpMode {
 
-
-    //DriveTrain
-    private DcMotor leftDrive = null;
-    private DcMotor rightDrive = null;
-    private DcMotor centerDrive = null;
-
     //Claw
     private Servo leftClaw = null;
 
@@ -34,11 +28,7 @@ public class GenericOpMode extends OpMode {
 
 
         //Here you will want to initialize basic objects for the robot (i.e drive train).
-
-        //DriveTrain
-        leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
-        rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-        centerDrive = hardwareMap.get(DcMotor.class, "centerDrive");
+        driveMotorMaps motors = new driveMotorMaps();
 
         //Claw
         leftClaw = hardwareMap.get(Servo.class, "claw_left");

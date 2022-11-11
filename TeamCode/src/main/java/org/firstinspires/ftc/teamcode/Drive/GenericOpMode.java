@@ -7,7 +7,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * Author(s): @Samuel-Trepac @aidandriscoll
  * Generic OpMode to be used as the starting point for the robot code. Ideally, this should be modified and
  * eventually deprecated.
- * OPMode refers to human-driver opperated driving
+ * OPMode refers to human-driver operated driving
  */
 public class GenericOpMode extends OpMode {
 
@@ -18,7 +18,9 @@ public class GenericOpMode extends OpMode {
 
     @Override
     public void init() { //INIT - When OpMode is init but not Started
-        telemetry.addData("STATUS:", "ENABLED");
+        telemetry.addData("STATUS:", "ENABLED"); // the FTC equivalent to println()
+        telemetry.addData("FTC Team #", "20718");
+
 
         //Here you will want to initialize basic objects for the robot (i.e drive train).
         leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
@@ -27,6 +29,7 @@ public class GenericOpMode extends OpMode {
 
         //for now because I am lazy I will call loop within initialization because that's a good and smart idea.
         //obviously change this. This is bad style, this is bad code.
+        //REMOVE IN PRODUCTION - NOT LEGAL
         loop();
 
     }

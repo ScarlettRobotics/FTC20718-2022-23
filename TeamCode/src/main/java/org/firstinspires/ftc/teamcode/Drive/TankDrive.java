@@ -6,7 +6,6 @@ import org.firstinspires.ftc.teamcode.Core.TriMotorDrive;
 
 
 /** TankDrive
- *
  *  Tank drive. left stick controls left motor, right stick controls right motor.
  *  Strafing is done with the bumpers.
  */

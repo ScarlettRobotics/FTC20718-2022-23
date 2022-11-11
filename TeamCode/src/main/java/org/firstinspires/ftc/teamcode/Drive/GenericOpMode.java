@@ -8,7 +8,7 @@ import org.firstinspires.ftc.teamcode.Core.TriMotorDrive;
 
 /** GenericOpMode
  * Generic OpMode to be used as the starting point for the robot code. Ideally, this should be modified and
- * eventually deprecated. Function susing tankdrive
+ * eventually deprecated. Function using tank drive
  */
 
 @TeleOp

@@ -3,6 +3,9 @@ package org.firstinspires.ftc.teamcode.Core;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+/** SlideCore
+ *  Handles inputs to the slide mechanism's motor.
+ */
 public class SlideCore {
     private DcMotor slideMotor = null;
 

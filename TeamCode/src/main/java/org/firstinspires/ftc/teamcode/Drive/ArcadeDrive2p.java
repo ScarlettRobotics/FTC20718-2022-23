@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.teamcode.Core.ClawCore;
 import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
+import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 
 /** ArcadeDrive 2 Player
@@ -15,17 +16,15 @@ import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
 @TeleOp
 public class ArcadeDrive2p extends OpMode {
 
-    //Claw
-    private Servo leftClaw = null;
-
-    private Servo rightClaw = null;
-
     DualMotorDrive drive = new DualMotorDrive();
     ClawCore claw = new ClawCore();
 
+    SlideCore slide = new SlideCore();
+
     @Override
     public void init() {
-        telemetry.addData("STATUS:", "Initialized");
+        telemetry.addData("DRIVE MODE: ", "Arcade 2 Player");
+        telemetry.addData("STATUS: ", "Initialized");
         telemetry.addData("FTC Team #", "20718");
 
     }
@@ -35,13 +34,9 @@ public class ArcadeDrive2p extends OpMode {
         //DriveTrain
         double forward = -gamepad1.left_stick_y;
         double right = gamepad1.left_stick_x;
-
         telemetry.addData("Stick X:", forward);
         telemetry.addData("Stick Y:", right);
-
-
         drive.setPowers(forward + right, forward - right);
-
 
         //Claw
         if (gamepad2.a){
@@ -49,6 +44,8 @@ public class ArcadeDrive2p extends OpMode {
         }
 
         //Slide
-        //Still to implement
+        double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
+        slide.setSlidePower(slidePower);
+
     }
 }

@@ -6,6 +6,9 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+/** DualMotorDrive
+ *  Runs the drivetrain of the robot.
+ */
 @TeleOp
 public class DualMotorDrive {
     //private fields
@@ -23,10 +26,6 @@ public class DualMotorDrive {
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
-
-
-    //TODO: figure this out later
-    //      centerMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
 
@@ -42,16 +41,8 @@ public class DualMotorDrive {
         largest = Math.max(largest, Math.abs(leftPower));
         largest = Math.max(largest, Math.abs(rightPower));
 
-        leftMotor.setPower(leftPower / largest);
-        rightMotor.setPower(rightPower / largest);
+        leftMotor.setPower(leftPower / largest);rightMotor.setPower(rightPower / largest);
 
     }
-
-    /** setCenterPower
-     *  helper function. Cleans up the setPowersFunction
-     * @param centerPower - Power sent to the center motor. Ensures the maximum range is -1 to 1.
-     */
-
-
 
 }

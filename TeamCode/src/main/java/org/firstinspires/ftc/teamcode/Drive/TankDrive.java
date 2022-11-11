@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Core.ClawCore;
 import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
+import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 
 /** TankDrive
@@ -13,12 +14,14 @@ import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
 public class TankDrive extends OpMode {
     DualMotorDrive drive = new DualMotorDrive();
     ClawCore claw = new ClawCore();
-
+    SlideCore slide = new SlideCore();
 
     @Override
     public void init() {
-            drive.init(hardwareMap);
-
+        drive.init(hardwareMap);
+        telemetry.addData("DRIVE MODE: ", "TankDrive 1 Player");
+        telemetry.addData("STATUS: ", "Initialized");
+        telemetry.addData("FTC Team #", "20718");
     }
 
     @Override
@@ -26,12 +29,9 @@ public class TankDrive extends OpMode {
         //DriveTrain
         double left = -gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;
-
         telemetry.addData("Left Stick:", left);
         telemetry.addData("Right Stick:", right);
-
         drive.setPowers(left, right);
-
 
         //Claw
         if (gamepad1.a) {
@@ -39,6 +39,7 @@ public class TankDrive extends OpMode {
         }
 
         //Slide
-        //Still to implement
+        double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
+        slide.setSlidePower(slidePower);
     }
 }

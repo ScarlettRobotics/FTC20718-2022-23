@@ -10,20 +10,20 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * eventually deprecated.
  */
 public class GenericOpMode extends OpMode {
-    @Override
+
 
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
+    private DcMotor centerDrive = null;
 
-
-
+    @Override
     public void init() {
         telemetry.addData("STATUS:", "ENABLED");
 
         //Here you will want to initialize basic objects for the robot (i.e drive train).
         leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-
+        centerDrive = hardwareMap.get(DcMotor.class, "centerDrive");
 
         //for now because I am lazy I will call loop within initialization because that's a good and smart idea.
         //obviously change this. This is bad style, this is bad code.

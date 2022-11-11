@@ -1,7 +1,10 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
+
 
 /** GenericOpMode
  * Author(s): @Samuel-Trepac @aidandriscoll
@@ -9,12 +12,20 @@ import com.qualcomm.robotcore.hardware.DcMotor;
  * eventually deprecated.
  * OPMode refers to human-driver operated driving
  */
+
+@TeleOp
 public class GenericOpMode extends OpMode {
 
 
+    //DriveTrain
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
     private DcMotor centerDrive = null;
+
+    //Claw
+    private Servo leftClaw = null;
+
+    private Servo rightClaw = null;
 
     @Override
     public void init() { //INIT - When OpMode is init but not Started
@@ -23,9 +34,16 @@ public class GenericOpMode extends OpMode {
 
 
         //Here you will want to initialize basic objects for the robot (i.e drive train).
+
+        //DriveTrain
         leftDrive = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
         centerDrive = hardwareMap.get(DcMotor.class, "centerDrive");
+
+        //Claw
+        leftClaw = hardwareMap.get(Servo.class, "claw_left");
+        rightClaw = hardwareMap.get(Servo.class, "claw_right");
+
 
         //for now because I am lazy I will call loop within initialization because that's a good and smart idea.
         //obviously change this. This is bad style, this is bad code.
@@ -37,7 +55,16 @@ public class GenericOpMode extends OpMode {
     @Override
     public void loop() { //START - after start button is pushed
 
-
+        //Open/Close Claw
+        telemetry.addData("Claw_Left", leftClaw.getPosition());
+        telemetry.addData("Claw_Right", rightClaw.getPosition());
+        if (gamepad1.a){
+            leftClaw.setPosition(0.3);
+            rightClaw.setPosition(0.6);
+        } else if (gamepad1.b) {
+            leftClaw.setPosition(0.6);
+            rightClaw.setPosition(0.2);
+        }
 
     }
 }

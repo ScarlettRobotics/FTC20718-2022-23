@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.Drive;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.Servo;
+import org.firstinspires.ftc.teamcode.Core.TriMotorDrive;
 
 
 /** GenericOpMode
@@ -22,7 +23,7 @@ public class GenericOpMode extends OpMode {
 
     @Override
     public void init() { //INIT - When OpMode is init but not Started
-        telemetry.addData("STATUS:", "ENABLED"); // the FTC equivalent to println()
+        telemetry.addData("STATUS:", "Initialized"); // the FTC equivalent to println()
         telemetry.addData("FTC Team #", "20718");
 
 

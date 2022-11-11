@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 @TeleOp
 public class TankDrive extends OpMode {
-    TriMotorDrive drive = new TriMotorDrive;
+    TriMotorDrive drive = new TriMotorDrive();
 
 
 

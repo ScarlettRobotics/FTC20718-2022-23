@@ -26,7 +26,6 @@ public class TankDrive extends OpMode {
         double right = gamepad1.right_stick_y;
         double center = 0;
 
-
         if (gamepad1.left_bumper) {
             center = - 1;
         } else if (gamepad1.right_bumper){
@@ -35,7 +34,7 @@ public class TankDrive extends OpMode {
             center = 0;
         }
 
-        drive.setSidePowers(left, right, center);
+        drive.setPowers(left, right, center);
 
     }
 }

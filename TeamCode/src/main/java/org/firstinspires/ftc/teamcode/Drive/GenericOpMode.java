@@ -1,13 +1,13 @@
-package org.firstinspires.ftc.teamcode.teamcode;
+package org.firstinspires.ftc.teamcode.Drive;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-
 /** GenericOpMode
- * Author(s): @Samuel-Trepac
+ * Author(s): @Samuel-Trepac @aidandriscoll
  * Generic OpMode to be used as the starting point for the robot code. Ideally, this should be modified and
  * eventually deprecated.
+ * OPMode refers to human-driver opperated driving
  */
 public class GenericOpMode extends OpMode {
 
@@ -17,7 +17,7 @@ public class GenericOpMode extends OpMode {
     private DcMotor centerDrive = null;
 
     @Override
-    public void init() {
+    public void init() { //INIT - When OpMode is init but not Started
         telemetry.addData("STATUS:", "ENABLED");
 
         //Here you will want to initialize basic objects for the robot (i.e drive train).
@@ -32,7 +32,7 @@ public class GenericOpMode extends OpMode {
     }
 
     @Override
-    public void loop() {
+    public void loop() { //START - after start button is pushed
 
 
 

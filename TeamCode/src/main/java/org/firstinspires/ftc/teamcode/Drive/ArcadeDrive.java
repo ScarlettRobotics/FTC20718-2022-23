@@ -26,12 +26,6 @@ public class ArcadeDrive extends OpMode {
     public void init() { //INIT - When OpMode is init but not Started
         telemetry.addData("STATUS:", "Initialized"); // the FTC equivalent to println()
         telemetry.addData("FTC Team #", "20718");
-
-
-        //for now because I am lazy I will call loop within initialization because that's a good and smart idea.
-        //obviously change this. This is bad style, this is bad code. Only exists to make debugging easier.
-        loop();
-
     }
 
     @Override

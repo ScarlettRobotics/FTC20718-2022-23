@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
 /** TankDrive
  *  Tank drive. left stick controls left motor, right stick controls right motor.
  */
-@TeleOp
+@TeleOp(name="TankDrive",group="auto")
 public class TankDrive extends OpMode {
     DualMotorDrive drive = new DualMotorDrive();
     ClawCore claw = new ClawCore();

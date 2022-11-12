@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
  *  Designed for driving to be on controller 1, upper systems on controller 2.
  *  Tank drive. left stick controls left motor, right stick controls right motor.
  */
-@TeleOp
+@TeleOp(name="TankDrive2P",group="auto")
 public class TankDrive2p extends OpMode {
     DualMotorDrive drive = new DualMotorDrive();
     ClawCore claw = new ClawCore();

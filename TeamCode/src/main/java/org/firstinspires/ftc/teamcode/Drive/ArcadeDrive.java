@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
  * Arcade driving, similar to playing a racing game.
  */
 
-@TeleOp
+@TeleOp(name="ArcadeDrive",group="auto")
 public class ArcadeDrive extends OpMode {
 
     //Claw

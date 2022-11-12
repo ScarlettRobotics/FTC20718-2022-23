@@ -22,10 +22,13 @@ public class TankDrive extends OpMode {
         telemetry.addData("DRIVE MODE: ", "TankDrive 1 Player");
         telemetry.addData("STATUS: ", "Initialized");
         telemetry.addData("FTC Team #", "20718");
+        telemetry.update();
     }
 
     @Override
     public void loop() {
+        telemetry.addData("STATUS: ", "Running");
+        telemetry.update();
         //DriveTrain
         double left = -gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;

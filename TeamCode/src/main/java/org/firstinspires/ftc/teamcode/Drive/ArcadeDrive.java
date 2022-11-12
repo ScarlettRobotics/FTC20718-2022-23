@@ -34,6 +34,8 @@ public class ArcadeDrive extends OpMode {
 
     @Override
     public void loop() { //START - after start button is pushed
+        telemetry.addData("STATUS: ", "Running");
+        telemetry.update();
         //DriveTrain
         double forward = -gamepad1.left_stick_y;
         double right = gamepad1.left_stick_x;

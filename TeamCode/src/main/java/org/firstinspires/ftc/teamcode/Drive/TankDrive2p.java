@@ -27,6 +27,8 @@ public class TankDrive2p extends OpMode {
 
     @Override
     public void loop() {
+        telemetry.addData("STATUS: ", "Running");
+        telemetry.update();
         //DriveTrain
         double left = -gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;

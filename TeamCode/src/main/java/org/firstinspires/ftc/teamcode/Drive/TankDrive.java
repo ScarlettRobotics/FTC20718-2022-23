@@ -42,7 +42,7 @@ public class TankDrive extends OpMode {
         }
 
         //Slide
-        double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
+        double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
         telemetry.addData("Slide Y:",slidePower);
 
         slide.setSlidePower(slidePower);

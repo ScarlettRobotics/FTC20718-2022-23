@@ -14,15 +14,12 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 @TeleOp(name="ArcadeDrive",group="auto")
 public class ArcadeDrive extends OpMode {
-
-    //Claw
+    // Init claw servo vars
     private Servo leftClaw = null;
-
     private Servo rightClaw = null;
-
+    // Init classes
     DualMotorDrive drive = new DualMotorDrive();
     ClawCore claw = new ClawCore();
-
     SlideCore slide = new SlideCore();
 
     @Override
@@ -43,11 +40,13 @@ public class ArcadeDrive extends OpMode {
         telemetry.addData("Stick Y:", right);
         drive.setPowers(forward + right, forward - right);
 
-        //Claw
-        if (gamepad1.a){
+        // Toggle claw on A press
+        if (gamepad1.a) {
             claw.clawToggle();
         }
-        //Slide
+
+        // TODO: set slide to move up and down along specific increments instead of linearly
+        // Move slide based on LT and RT press
         double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
         telemetry.addData("Slide Y:",slidePower);
 

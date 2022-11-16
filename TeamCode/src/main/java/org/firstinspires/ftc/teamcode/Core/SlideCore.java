@@ -10,6 +10,7 @@ public class SlideCore {
     private DcMotor slideMotor = null;
 
     public void init (HardwareMap hardwareMap) {
+        // Init slide motor
         slideMotor = hardwareMap.get(DcMotor.class, "slide_motor");
         slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
@@ -29,5 +30,5 @@ public class SlideCore {
         slideMotor.setPower((slidePower / largest));
 
     }
-
+    
 }

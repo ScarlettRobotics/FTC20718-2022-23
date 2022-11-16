@@ -6,20 +6,14 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class ClawCore {
-    // Init vars
     private Servo leftClaw = null;
     private Servo rightClaw = null;
     private boolean clawIsOpen = false; //stores the initial state of the claw.
-
     public void init (HardwareMap hardwareMap){
-        // Mapping claw servos to vars
         leftClaw = hardwareMap.get(Servo.class, "claw_left");
         rightClaw = hardwareMap.get(Servo.class, "claw_right");
     }
 
-    /** telemetry
-     *  main function for outputting variable information to debug later
-     */
     public void telemetry(Telemetry tem){
         tem.addData("Claw Left POS:", leftClaw.getPosition());
         tem.addData("Claw Right POS:", rightClaw.getPosition());
@@ -32,8 +26,11 @@ public class ClawCore {
      *  that the claw will still open and close even if it has been bumped or stressed to a different point.
      */
     public void clawToggle(){
-        // same function as an if/else statement: IF clawIsOpen THEN clawClose() ELSE clawOpen()
-        (clawIsOpen) ? clawClose() : clawOpen();
+        if (clawIsOpen){
+            clawClose();
+        } else {
+            clawOpen();
+        }
     }
 
 

@@ -13,7 +13,6 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
  */
 @TeleOp(name="TankDrive2P",group="auto")
 public class TankDrive2p extends OpMode {
-    // Init classes
     DualMotorDrive drive = new DualMotorDrive();
     ClawCore claw = new ClawCore();
     SlideCore slide = new SlideCore();
@@ -37,17 +36,15 @@ public class TankDrive2p extends OpMode {
         telemetry.addData("Right Stick:", right);
         drive.setPowers(left, right);
 
-        // Toggle claw on A press
+        //Claw
         if (gamepad2.a){
             claw.clawToggle();
         }
 
-        // TODO: set slide to move up and down along specific increments instead of linearly
-        // Move slide based on LT and RT press
+        //Slide
         double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
         telemetry.addData("Slide Y:",slidePower);
 
         slide.setSlidePower(slidePower);
-
     }
 }

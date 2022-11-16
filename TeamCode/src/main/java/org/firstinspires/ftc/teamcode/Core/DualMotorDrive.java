@@ -9,12 +9,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 /** DualMotorDrive
  *  Runs the drivetrain of the robot.
  */
-@TeleOp
 public class DualMotorDrive {
     //private fields
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;
-    private DcMotor centerMotor = null;
 
 
     public void init (HardwareMap hardwareMap) {
@@ -41,7 +39,8 @@ public class DualMotorDrive {
         largest = Math.max(largest, Math.abs(leftPower));
         largest = Math.max(largest, Math.abs(rightPower));
 
-        leftMotor.setPower(leftPower / largest);rightMotor.setPower(rightPower / largest);
+        leftMotor.setPower(leftPower / largest);
+        rightMotor.setPower(rightPower / largest);
 
     }
 

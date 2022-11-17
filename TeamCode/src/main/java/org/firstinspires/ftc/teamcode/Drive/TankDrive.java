@@ -51,5 +51,8 @@ public class TankDrive extends OpMode {
         telemetry.addData("Slide Y:",slidePower);
 
         slide.setSlidePower(slidePower);
+
+        //Claw Debug
+        claw.telemetry(telemetry);
     }
 }

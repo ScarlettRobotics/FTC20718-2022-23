@@ -12,9 +12,9 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
 @Autonomous(name = "ExampleAuto", group = "Auto")
 public class AutoEx extends LinearOpMode{
 
-    private DualMotorDrive drive = new DualMotorDrive(hardwareMap);
-    private ClawCore claw = new ClawCore(hardwareMap);
-    private SlideCore slide = new SlideCore(hardwareMap);
+    private DualMotorDrive drive;
+    private ClawCore claw;
+    private SlideCore slide;
     private ElapsedTime runtime = new ElapsedTime();
 
     //Vars
@@ -26,6 +26,11 @@ public class AutoEx extends LinearOpMode{
         telemetry.addData("Auto MODE: ", "Auto example");
         telemetry.addData("FTC Team #", "20718");
         telemetry.update();
+
+        //Init
+        drive = new DualMotorDrive(hardwareMap);
+        claw = new ClawCore(hardwareMap);
+        slide = new SlideCore(hardwareMap);
 
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() <= 3.0)) {

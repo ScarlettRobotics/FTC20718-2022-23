@@ -9,7 +9,7 @@ public class ClawCore {
     private Servo rightClaw = null;
     private Servo leftClaw = null;
     private boolean clawIsOpen = false; //stores the initial state of the claw.
-    public void init (HardwareMap hardwareMap){
+    public ClawCore (HardwareMap hardwareMap){
         rightClaw = hardwareMap.get(Servo.class, "claw_left");
         leftClaw = hardwareMap.get(Servo.class, "claw_right");
     }

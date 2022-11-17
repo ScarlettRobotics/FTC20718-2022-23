@@ -20,13 +20,16 @@ public class ArcadeDrive extends OpMode {
 
     private Servo rightClaw = null;
 
-    DualMotorDrive drive = new DualMotorDrive();
-    ClawCore claw = new ClawCore();
+    DualMotorDrive drive;
+    ClawCore claw;
 
-    SlideCore slide = new SlideCore();
+    SlideCore slide;
 
     @Override
     public void init() { //INIT - When OpMode is init but not Started
+        drive = new DualMotorDrive(hardwareMap);
+        claw = new ClawCore(hardwareMap);
+        slide = new SlideCore(hardwareMap);
         telemetry.addData("DRIVE MODE: ", "ArcadeDrive 1 Player");
         telemetry.addData("STATUS: ", "Initialized"); // the FTC equivalent to println()
         telemetry.addData("FTC Team #", "20718");

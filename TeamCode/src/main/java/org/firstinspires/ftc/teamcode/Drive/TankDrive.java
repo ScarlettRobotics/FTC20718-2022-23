@@ -12,13 +12,15 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
  */
 @TeleOp(name="TankDrive",group="auto")
 public class TankDrive extends OpMode {
-    DualMotorDrive drive = new DualMotorDrive();
-    ClawCore claw = new ClawCore();
-    SlideCore slide = new SlideCore();
+    DualMotorDrive drive;
+    ClawCore claw;
+    SlideCore slide;
 
     @Override
     public void init() {
-        drive.init(hardwareMap);
+        drive = new DualMotorDrive(hardwareMap);
+        claw = new ClawCore(hardwareMap);
+        slide = new SlideCore(hardwareMap);
         telemetry.addData("DRIVE MODE: ", "TankDrive 1 Player");
         telemetry.addData("STATUS: ", "Initialized");
         telemetry.addData("FTC Team #", "20718");
@@ -27,7 +29,6 @@ public class TankDrive extends OpMode {
 
     @Override
     public void loop() {
-        telemetry.addData("STATUS: ", "Running");
         telemetry.update();
         //DriveTrain
         double left = -gamepad1.left_stick_y;
@@ -38,7 +39,11 @@ public class TankDrive extends OpMode {
 
         //Claw
         if (gamepad1.a) {
-            claw.clawToggle();
+            claw.clawOpen();
+        }
+
+        if (gamepad1.b){
+            claw.clawClose();
         }
 
         //Slide

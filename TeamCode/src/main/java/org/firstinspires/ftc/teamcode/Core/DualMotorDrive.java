@@ -14,10 +14,9 @@ public class DualMotorDrive {
     //private fields
     private DcMotor leftMotor = null;
     private DcMotor rightMotor = null;
-    private DcMotor centerMotor = null;
 
 
-    public void init (HardwareMap hardwareMap) {
+    public DualMotorDrive (HardwareMap hardwareMap) {
 
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
@@ -25,6 +24,8 @@ public class DualMotorDrive {
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
 
     }
 
@@ -41,7 +42,8 @@ public class DualMotorDrive {
         largest = Math.max(largest, Math.abs(leftPower));
         largest = Math.max(largest, Math.abs(rightPower));
 
-        leftMotor.setPower(leftPower / largest);rightMotor.setPower(rightPower / largest);
+        leftMotor.setPower(leftPower / largest);
+        rightMotor.setPower(rightPower / largest);
 
     }
 

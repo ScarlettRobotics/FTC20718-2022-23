@@ -13,13 +13,15 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
  */
 @TeleOp(name="TankDrive2P",group="auto")
 public class TankDrive2p extends OpMode {
-    DualMotorDrive drive = new DualMotorDrive();
-    ClawCore claw = new ClawCore();
-    SlideCore slide = new SlideCore();
+    DualMotorDrive drive;
+    ClawCore claw;
+    SlideCore slide;
 
     @Override
     public void init() {
-        drive.init(hardwareMap);
+        drive = new DualMotorDrive(hardwareMap);
+        claw = new ClawCore(hardwareMap);
+        slide = new SlideCore(hardwareMap);
         telemetry.addData("DRIVE MODE: ", "TankDrive 2 Player");
         telemetry.addData("STATUS: ", "Initialized");
         telemetry.addData("FTC Team #", "20718");

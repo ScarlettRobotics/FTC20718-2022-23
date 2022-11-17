@@ -16,13 +16,16 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
 @TeleOp(name="ArcadeDrive2P",group="auto")
 public class ArcadeDrive2p extends OpMode {
 
-    DualMotorDrive drive = new DualMotorDrive();
-    ClawCore claw = new ClawCore();
+    DualMotorDrive drive;
+    ClawCore claw;
 
-    SlideCore slide = new SlideCore();
+    SlideCore slide;
 
     @Override
     public void init() {
+        drive = new DualMotorDrive(hardwareMap);
+        claw = new ClawCore(hardwareMap);
+        slide = new SlideCore(hardwareMap);
         telemetry.addData("DRIVE MODE: ", "Arcade 2 Player");
         telemetry.addData("STATUS: ", "Initialized");
         telemetry.addData("FTC Team #", "20718");

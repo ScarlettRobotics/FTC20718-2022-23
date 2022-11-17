@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Core;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /** SlideCore
@@ -9,9 +10,11 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class SlideCore {
     private DcMotor slideMotor = null;
 
-    public void init (HardwareMap hardwareMap) {
+    public SlideCore (HardwareMap hardwareMap) {
         slideMotor = hardwareMap.get(DcMotor.class, "slide_motor");
         slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        slideMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
     }
 
     /** setSlidePower
@@ -23,7 +26,7 @@ public class SlideCore {
      * @param slidePower Raw input power
      */
     public void setSlidePower(double slidePower){
-        double largest = 1.0;
+        double largest = 0.5;
         largest = Math.max(largest, Math.abs(slidePower));
 
         slideMotor.setPower((slidePower / largest));

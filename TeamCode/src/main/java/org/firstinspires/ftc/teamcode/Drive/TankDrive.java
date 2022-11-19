@@ -17,7 +17,7 @@ public class TankDrive extends OpMode {
     SlideCore slide;
 
     @Override
-    public void init() {
+    public void init() {                
         drive = new DualMotorDrive(hardwareMap);
         claw = new ClawCore(hardwareMap);
         slide = new SlideCore(hardwareMap);

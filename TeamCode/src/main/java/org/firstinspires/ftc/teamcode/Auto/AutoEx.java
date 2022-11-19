@@ -32,6 +32,8 @@ public class AutoEx extends LinearOpMode {
         claw = new ClawCore(hardwareMap);
         slide = new SlideCore(hardwareMap);
 
+        waitForStart();
+
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() <= 3.0)) {
             leftMotor  = 0.5;

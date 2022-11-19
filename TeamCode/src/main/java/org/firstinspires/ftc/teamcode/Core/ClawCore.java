@@ -10,8 +10,8 @@ public class ClawCore {
     private Servo leftClaw = null;
     private boolean clawIsOpen = false; //stores the initial state of the claw.
     public ClawCore (HardwareMap hardwareMap){
-        rightClaw = hardwareMap.get(Servo.class, "claw_left");
-        leftClaw = hardwareMap.get(Servo.class, "claw_right");
+        rightClaw = hardwareMap.get(Servo.class, "claw_right");
+        leftClaw = hardwareMap.get(Servo.class, "claw_left");
     }
 
     public void telemetry(Telemetry tem){

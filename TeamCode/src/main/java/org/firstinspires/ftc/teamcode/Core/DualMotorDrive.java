@@ -1,9 +1,7 @@
 package org.firstinspires.ftc.teamcode.Core;
 
-
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /** DualMotorDrive
@@ -23,10 +21,8 @@ public class DualMotorDrive {
 
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-
-
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightMotor.setDirection(DcMotor.Direction.REVERSE);
     }
 
 
@@ -36,7 +32,7 @@ public class DualMotorDrive {
      * @param leftPower - power sent to the left motor
      * @param rightPower - power to the right motor
      */
-    public void setPowers(double leftPower, double rightPower){
+    public void setPowers(double leftPower, double rightPower) {
         double largest = 1.0;
 
         largest = Math.max(largest, Math.abs(leftPower));

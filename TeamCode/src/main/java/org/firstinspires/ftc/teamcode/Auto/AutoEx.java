@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
 import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 @Autonomous(name = "ExampleAuto", group = "Auto")
-public class AutoEx extends LinearOpMode{
+public class AutoEx extends LinearOpMode {
 
     private DualMotorDrive drive;
     private ClawCore claw;
@@ -20,7 +20,7 @@ public class AutoEx extends LinearOpMode{
     //Vars
     //Motor Speeds
     private double leftMotor = 0;
-    private double rightMotor = 00;
+    private double rightMotor = 0;
     @Override
     public void runOpMode() {
         telemetry.addData("Auto MODE: ", "Auto example");

@@ -15,8 +15,8 @@ public class ClawCore {
     }
 
     public void telemetry(Telemetry tem){
-        tem.addData("Claw Left POS:", rightClaw.getPosition());
-        tem.addData("Claw Right POS:", leftClaw.getPosition());
+        tem.addData("Claw Right POS:", rightClaw.getPosition());
+        tem.addData("Claw Left POS:", leftClaw.getPosition());
     }
 
 
@@ -38,8 +38,8 @@ public class ClawCore {
      *  Opens the claw to a pre-set width.
      */
     public void clawOpen(){
-        rightClaw.setPosition(0.9);
-        //leftClaw.setPosition(0.6);
+        rightClaw.setPosition(0.55);
+        leftClaw.setPosition(0.7);
         clawIsOpen = true;
     }
 
@@ -47,8 +47,8 @@ public class ClawCore {
      *  closes the claw to a pre-set width.
      */
     public void clawClose(){
-        rightClaw.setPosition(0.2);
-        //leftClaw.setPosition(0.2);
+        rightClaw.setPosition(0.65);
+        leftClaw.setPosition(0.6);
         clawIsOpen = false;
     }
 }

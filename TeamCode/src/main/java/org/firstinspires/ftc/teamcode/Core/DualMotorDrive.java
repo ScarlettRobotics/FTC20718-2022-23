@@ -7,7 +7,6 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 /** DualMotorDrive
  *  Runs the drivetrain of the robot.
  */
-@TeleOp
 public class DualMotorDrive {
     //private fields
     private DcMotor leftMotor;

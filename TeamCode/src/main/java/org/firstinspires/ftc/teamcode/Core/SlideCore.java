@@ -13,7 +13,6 @@ public class SlideCore {
         slideMotor = hardwareMap.get(DcMotor.class, "slide_motor");
         slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         slideMotor.setDirection(DcMotor.Direction.REVERSE);
-
     }
 
     /** setSlidePower
@@ -27,9 +26,7 @@ public class SlideCore {
     public void setSlidePower(double slidePower){
         double largest = 0.5;
         largest = Math.max(largest, Math.abs(slidePower));
-
         slideMotor.setPower((slidePower / largest));
-
     }
 
 }

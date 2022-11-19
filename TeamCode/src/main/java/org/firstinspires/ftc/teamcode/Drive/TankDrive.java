@@ -40,16 +40,13 @@ public class TankDrive extends OpMode {
         //Claw
         if (gamepad1.a) {
             claw.clawOpen();
-        }
-
-        if (gamepad1.b){
+        } else if (gamepad1.b){
             claw.clawClose();
         }
 
         //Slide
         double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
         telemetry.addData("Slide Y:",slidePower);
-
         slide.setSlidePower(slidePower);
 
         //Claw Debug

@@ -10,8 +10,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 @TeleOp
 public class DualMotorDrive {
     //private fields
-    private DcMotor leftMotor = null;
-    private DcMotor rightMotor = null;
+    private DcMotor leftMotor;
+    private DcMotor rightMotor;
 
 
     public DualMotorDrive (HardwareMap hardwareMap) {
@@ -40,7 +40,6 @@ public class DualMotorDrive {
 
         leftMotor.setPower(leftPower / largest);
         rightMotor.setPower(rightPower / largest);
-
     }
 
 }

@@ -29,7 +29,6 @@ public class ArcadeDrive2p extends OpMode {
         telemetry.addData("DRIVE MODE: ", "Arcade 2 Player");
         telemetry.addData("STATUS: ", "Initialized");
         telemetry.addData("FTC Team #", "20718");
-
     }
 
     @Override
@@ -45,7 +44,9 @@ public class ArcadeDrive2p extends OpMode {
 
         //Claw
         if (gamepad2.a){
-            claw.clawToggle();
+            claw.clawOpen();
+        } else if(gamepad2.b) {
+            claw.clawClose();
         }
 
         //Slide

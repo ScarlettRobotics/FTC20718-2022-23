@@ -9,46 +9,49 @@ public class ClawCore {
     private Servo rightClaw = null;
     private Servo leftClaw = null;
     private boolean clawIsOpen = false; //stores the initial state of the claw.
-    public ClawCore (HardwareMap hardwareMap){
+
+    public ClawCore(HardwareMap hardwareMap) {
         rightClaw = hardwareMap.get(Servo.class, "claw_right");
         leftClaw = hardwareMap.get(Servo.class, "claw_left");
     }
 
-    public void telemetry(Telemetry tem){
-        tem.addData("Claw Right POS:", rightClaw.getPosition());
-        tem.addData("Claw Left POS:", leftClaw.getPosition());
-    }
 
-
-    /** clawToggle
-     *  sets the claw to be in either open or closed position.
-     *  the state of the claw is stored as a private field within the object instance. This ensures
-     *  that the claw will still open and close even if it has been bumped or stressed to a different point.
+    /**
+     * clawToggle
+     * sets the claw to be in either open or closed position.
+     * the state of the claw is stored as a private field within the object instance. This ensures
+     * that the claw will still open and close even if it has been bumped or stressed to a different point.
      */
-    public void clawToggle(){
-        if (clawIsOpen){
+    public void clawToggle() {
+        if (clawIsOpen) {
             clawClose();
         } else {
             clawOpen();
         }
     }
 
-
-    /** clawOpen
-     *  Opens the claw to a pre-set width.
+    /**
+     * clawOpen
+     * Opens the claw to a pre-set width.
      */
-    public void clawOpen(){
+    public void clawOpen() {
         rightClaw.setPosition(0.575);
         leftClaw.setPosition(0.73);
         clawIsOpen = true;
     }
 
-    /** clawClose
-     *  closes the claw to a pre-set width.
+    /**
+     * clawClose
+     * closes the claw to a pre-set width.
      */
-    public void clawClose(){
+    public void clawClose() {
         rightClaw.setPosition(0.67);
         leftClaw.setPosition(0.6);
         clawIsOpen = false;
+    }
+
+    public void telemetry(Telemetry telemetry) {
+        telemetry.addData("Claw Right POS:", rightClaw.getPosition());
+        telemetry.addData("Claw Left POS:", leftClaw.getPosition());
     }
 }

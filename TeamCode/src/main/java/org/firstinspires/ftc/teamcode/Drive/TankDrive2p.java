@@ -7,11 +7,12 @@ import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
 import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 
-/** TankDrive 2 Player
- *  Designed for driving to be on controller 1, upper systems on controller 2.
- *  Tank drive. left stick controls left motor, right stick controls right motor.
+/**
+ * TankDrive 2 Player
+ * Designed for driving to be on controller 1, upper systems on controller 2.
+ * Tank drive. left stick controls left motor, right stick controls right motor.
  */
-@TeleOp(name="TankDrive2P",group="auto")
+@TeleOp(name = "TankDrive2P", group = "auto")
 public class TankDrive2p extends OpMode {
     DualMotorDrive drive;
     ClawCore claw;
@@ -32,22 +33,22 @@ public class TankDrive2p extends OpMode {
         telemetry.addData("STATUS: ", "Running");
         telemetry.update();
         //DriveTrain
-        double left = -gamepad1.left_stick_y;
+        double left = gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;
-        telemetry.addData("Left Stick:", left);
-        telemetry.addData("Right Stick:", right);
         drive.setPowers(left, right);
+        drive.telemetry(telemetry, left, right);
 
         //Claw
-        if (gamepad2.a){
+        if (gamepad2.a) {
             claw.clawOpen();
-        } else if(gamepad2.b) {
+        } else if (gamepad2.b) {
             claw.clawClose();
         }
+        claw.telemetry(telemetry);
 
         //Slide
         double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
-        telemetry.addData("Slide Y:",slidePower);
         slide.setSlidePower(slidePower);
+        slide.telemetry(telemetry, slidePower);
     }
 }

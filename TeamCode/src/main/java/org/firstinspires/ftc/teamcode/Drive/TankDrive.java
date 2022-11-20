@@ -7,17 +7,18 @@ import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
 import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 
-/** TankDrive
- *  Tank drive. left stick controls left motor, right stick controls right motor.
+/**
+ * TankDrive
+ * Tank drive. left stick controls left motor, right stick controls right motor.
  */
-@TeleOp(name="TankDrive",group="auto")
+@TeleOp(name = "TankDrive", group = "auto")
 public class TankDrive extends OpMode {
     DualMotorDrive drive;
     ClawCore claw;
     SlideCore slide;
 
     @Override
-    public void init() {                
+    public void init() {
         drive = new DualMotorDrive(hardwareMap);
         claw = new ClawCore(hardwareMap);
         slide = new SlideCore(hardwareMap);
@@ -31,25 +32,23 @@ public class TankDrive extends OpMode {
     public void loop() {
         telemetry.update();
         //DriveTrain
-        double left = -gamepad1.left_stick_y;
+        double left = gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;
-        telemetry.addData("Left Stick:", left);
-        telemetry.addData("Right Stick:", right);
         drive.setPowers(left, right);
+        drive.telemetry(telemetry, left, right);
 
         //Claw
         if (gamepad1.a) {
             claw.clawOpen();
-        } else if (gamepad1.b){
+        } else if (gamepad1.b) {
             claw.clawClose();
         }
+        claw.telemetry(telemetry);
 
         //Slide
         double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
-        telemetry.addData("Slide Y:",slidePower);
         slide.setSlidePower(slidePower);
+        slide.telemetry(telemetry, slidePower);
 
-        //Claw Debug
-        claw.telemetry(telemetry);
     }
 }

@@ -21,6 +21,7 @@ public class AutoEx extends LinearOpMode {
     //Motor Speeds
     private double leftMotor = 0;
     private double rightMotor = 0;
+
     @Override
     public void runOpMode() {
         telemetry.addData("Auto MODE: ", "Auto example");
@@ -36,26 +37,23 @@ public class AutoEx extends LinearOpMode {
 
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() <= 0.5)) {
-            leftMotor  = -0.5;
+            leftMotor = 0.5;
             rightMotor = 0.75;
-            telemetry.addData("Left Power:", leftMotor);
-            telemetry.addData("Right Stick:", rightMotor);
-            telemetry.update();
             drive.setPowers(leftMotor, rightMotor);
+            drive.telemetry(telemetry, leftMotor, rightMotor);
+            telemetry.update();
         }
         while (opModeIsActive() && (runtime.seconds() <= 1)) {
-            leftMotor  = 1;
+            leftMotor = 1;
             rightMotor = 1;
-            telemetry.addData("Left Power:", leftMotor);
-            telemetry.addData("Right Stick:", rightMotor);
-            telemetry.update();
             drive.setPowers(leftMotor, rightMotor);
+            drive.telemetry(telemetry, leftMotor, rightMotor);
+            telemetry.update();
         }
         leftMotor = 0;
         rightMotor = 0;
         drive.setPowers(leftMotor, rightMotor);
-        telemetry.addData("Left Power:", leftMotor);
-        telemetry.addData("Right Stick:", rightMotor);
+        drive.telemetry(telemetry, leftMotor, rightMotor);
         telemetry.update();
     }
 }

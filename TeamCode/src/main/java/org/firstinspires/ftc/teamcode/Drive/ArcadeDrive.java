@@ -8,11 +8,12 @@ import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
 import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 
-/** ArcadeDrive
+/**
+ * ArcadeDrive
  * Arcade driving, similar to playing a racing game.
  */
 
-@TeleOp(name="WIP ArcadeDrive",group="auto")
+@TeleOp(name = "WIP ArcadeDrive", group = "auto")
 public class ArcadeDrive extends OpMode {
 
     //Claw
@@ -40,22 +41,22 @@ public class ArcadeDrive extends OpMode {
         telemetry.addData("STATUS: ", "Running");
         telemetry.update();
         //DriveTrain
-        double forward = -gamepad1.left_stick_y;
+        double forward = gamepad1.left_stick_y;
         double right = gamepad1.left_stick_x;
         telemetry.addData("Stick X:", forward);
         telemetry.addData("Stick Y:", right);
         drive.setPowers(forward + right, forward - right);
 
         //Claw
-        if (gamepad1.a){
+        if (gamepad1.a) {
             claw.clawOpen();
-        } else if(gamepad1.b) {
+        } else if (gamepad1.b) {
             claw.clawClose();
         }
 
         //Slide
         double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
-        telemetry.addData("Slide Y:",slidePower);
+        telemetry.addData("Slide Y:", slidePower);
         slide.setSlidePower(slidePower);
     }
 }

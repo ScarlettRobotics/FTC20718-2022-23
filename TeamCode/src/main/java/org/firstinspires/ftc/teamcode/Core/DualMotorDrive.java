@@ -3,9 +3,11 @@ package org.firstinspires.ftc.teamcode.Core;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-/** DualMotorDrive
- *  Runs the drivetrain of the robot.
+/**
+ * DualMotorDrive
+ * Runs the drivetrain of the robot.
  */
 public class DualMotorDrive {
     //private fields
@@ -13,22 +15,21 @@ public class DualMotorDrive {
     private DcMotor rightMotor;
 
 
-    public DualMotorDrive (HardwareMap hardwareMap) {
-
+    public DualMotorDrive(HardwareMap hardwareMap) {
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftMotor.setDirection(DcMotor.Direction.REVERSE);
         rightMotor.setDirection(DcMotor.Direction.REVERSE);
     }
 
 
-    /** setPowers
+    /**
+     * setPowers
      * Ensures that the range of power sent to the motors is
      *
-     * @param leftPower - power sent to the left motor
+     * @param leftPower  - power sent to the left motor
      * @param rightPower - power to the right motor
      */
     public void setPowers(double leftPower, double rightPower) {
@@ -41,4 +42,8 @@ public class DualMotorDrive {
         rightMotor.setPower(rightPower / largest);
     }
 
+    public void telemetry(Telemetry telemetry, double leftPower, double rightPower) {
+        telemetry.addData("Left Stick:", leftPower);
+        telemetry.addData("Right Stick:", rightPower);
+    }
 }

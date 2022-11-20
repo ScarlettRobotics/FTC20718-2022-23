@@ -44,7 +44,7 @@ public class ArcadeDrive extends OpMode {
         double right = gamepad1.left_stick_x;
         telemetry.addData("Stick X:", forward);
         telemetry.addData("Stick Y:", right);
-        drive.setPowers(forward + right, -1 * (forward - right) );
+        drive.setPowers(forward + right, forward - right);
 
         //Claw
         if (gamepad1.a){

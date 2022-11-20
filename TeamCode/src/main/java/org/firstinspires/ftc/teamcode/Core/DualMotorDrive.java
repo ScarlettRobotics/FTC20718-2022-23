@@ -8,16 +8,15 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
  *  Runs the drivetrain of the robot.
  */
 public class DualMotorDrive {
-    //private fields
+    // Initialize DC motor variables
     private DcMotor leftMotor;
     private DcMotor rightMotor;
-
-
+    // Map DC motor variables to driver hub
     public DualMotorDrive (HardwareMap hardwareMap) {
-
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
+        // Sets
         leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -26,19 +25,21 @@ public class DualMotorDrive {
 
 
     /** setPowers
-     * Ensures that the range of power sent to the motors is
+     * Sets the Ensures that the range of power sent to the motors is
      *
-     * @param leftPower - power sent to the left motor
-     * @param rightPower - power to the right motor
+     * @param powerLeft - power sent to the left motor
+     * @param powerRight - power to the right motor
      */
-    public void setPowers(double leftPower, double rightPower) {
+    public void setPowers(double powerLeft, double powerRight) {
         double largest = 1.0;
 
-        largest = Math.max(largest, Math.abs(leftPower));
-        largest = Math.max(largest, Math.abs(rightPower));
+        // Takes the largest value out of 1.0, powerLeft, and powerRight
+        largest = Math.max(largest, Math.abs(powerLeft));
+        largest = Math.max(largest, Math.abs(powerRight));
 
-        leftMotor.setPower(leftPower / largest);
-        rightMotor.setPower(rightPower / largest);
+        // Sets the power of the motors in relation to largest
+        leftMotor.setPower(powerLeft / largest);
+        rightMotor.setPower(powerRight / largest);
     }
 
 }

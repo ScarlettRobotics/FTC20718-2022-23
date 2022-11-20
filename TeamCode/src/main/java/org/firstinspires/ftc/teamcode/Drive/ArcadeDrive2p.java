@@ -15,12 +15,12 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 @TeleOp(name="WIP ArcadeDrive2P",group="auto")
 public class ArcadeDrive2p extends OpMode {
-
+    // Initialize classes from other files
     DualMotorDrive drive;
     ClawCore claw;
-
     SlideCore slide;
 
+    // Define classes from other files
     @Override
     public void init() {
         drive = new DualMotorDrive(hardwareMap);
@@ -35,24 +35,30 @@ public class ArcadeDrive2p extends OpMode {
     public void loop() {
         telemetry.addData("STATUS", "Running");
         telemetry.update();
-        //DriveTrain
+
+        //// DRIVETRAIN
+        // Move drivetrain based on left stick movement
         double forward = -gamepad1.left_stick_y;
         double right = gamepad1.left_stick_x;
+        drive.setPowers(forward + right, -1 * (forward - right) );
+        // Debug info
         telemetry.addData("Stick X:", forward);
         telemetry.addData("Stick Y:", right);
-        drive.setPowers(forward + right, -1 * (forward - right) );
 
-        //Claw
+        //// CLAW
+        // Open/close claw if A/B is pressed (respectively)
         if (gamepad2.a){
             claw.clawOpen();
         } else if(gamepad2.b) {
             claw.clawClose();
         }
 
-        //Slide
+        //// SLIDE
+        // Move slide based on LT/RT presses
         double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
-        telemetry.addData("Slide Y:",slidePower);
         slide.setSlidePower(slidePower);
+        // Debug info
+        telemetry.addData("Slide Y:",slidePower);
 
     }
 }

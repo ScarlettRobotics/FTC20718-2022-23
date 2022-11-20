@@ -6,9 +6,12 @@ import com.qualcomm.robotcore.hardware.Servo;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
 public class ClawCore {
+    // Initialize claw variables
     private Servo rightClaw = null;
     private Servo leftClaw = null;
-    private boolean clawIsOpen = false; //stores the initial state of the claw.
+    // Stores state of the claw
+    private boolean clawIsOpen = false;
+    // Map claw variables to driver hub
     public ClawCore (HardwareMap hardwareMap){
         rightClaw = hardwareMap.get(Servo.class, "claw_right");
         leftClaw = hardwareMap.get(Servo.class, "claw_left");
@@ -19,10 +22,9 @@ public class ClawCore {
         telemetry.addData("Claw Left POS", leftClaw.getPosition());
     }
 
-
     /** clawToggle
-     *  sets the claw to be in either open or closed position.
-     *  the state of the claw is stored as a private field within the object instance. This ensures
+     *  Sets the claw to be in either open or closed position.
+     *  The state of the claw is stored as a private field within the object instance. This ensures
      *  that the claw will still open and close even if it has been bumped or stressed to a different point.
      */
     public void clawToggle(){
@@ -35,7 +37,7 @@ public class ClawCore {
 
 
     /** clawOpen
-     *  Opens the claw to a pre-set width.
+     *  Opens the claw to a pre-set width, then updates clawIsOpen.
      */
     public void clawOpen(){
         rightClaw.setPosition(0.575);
@@ -44,7 +46,7 @@ public class ClawCore {
     }
 
     /** clawClose
-     *  closes the claw to a pre-set width.
+     *  Closes the claw to a pre-set width, then updates clawIsOpen.
      */
     public void clawClose(){
         rightClaw.setPosition(0.67);

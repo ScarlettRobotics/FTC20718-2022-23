@@ -14,17 +14,15 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 @TeleOp(name="WIP ArcadeDrive",group="auto")
 public class ArcadeDrive extends OpMode {
-
-    //Claw
+    // Initialize claw variables
     private Servo leftClaw = null;
-
     private Servo rightClaw = null;
-
+    // Initialize classes from other files
     DualMotorDrive drive;
     ClawCore claw;
-
     SlideCore slide;
 
+    // Define classes from other files
     @Override
     public void init() { //INIT - When OpMode is init but not Started
         drive = new DualMotorDrive(hardwareMap);
@@ -39,23 +37,29 @@ public class ArcadeDrive extends OpMode {
     public void loop() { //START - after start button is pushed
         telemetry.addData("STATUS: ", "Running");
         telemetry.update();
-        //DriveTrain
+
+        //// DRIVETRAIN
+        // Move drivetrain based on left stick movement
         double forward = -gamepad1.left_stick_y;
         double right = gamepad1.left_stick_x;
+        drive.setPowers(forward + right, -1 * (forward - right) );
+        // Debug info
         telemetry.addData("Stick X:", forward);
         telemetry.addData("Stick Y:", right);
-        drive.setPowers(forward + right, -1 * (forward - right) );
 
-        //Claw
+        //// CLAW
+        // Open/close claw if A/B is pressed (respectively)
         if (gamepad1.a){
             claw.clawOpen();
         } else if(gamepad1.b) {
             claw.clawClose();
         }
 
-        //Slide
+        //// SLIDE
+        // Move slide based on LT/RT presses
         double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
-        telemetry.addData("Slide Y:",slidePower);
         slide.setSlidePower(slidePower);
+        // Debug info
+        telemetry.addData("Slide Y:",slidePower);
     }
 }

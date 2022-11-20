@@ -35,19 +35,27 @@ public class AutoEx extends LinearOpMode {
         waitForStart();
 
         runtime.reset();
+        while (opModeIsActive() && (runtime.seconds() <= 0.5)) {
+            leftMotor  = -0.5;
+            rightMotor = 0.75;
+            telemetry.addData("Left Power:", leftMotor);
+            telemetry.addData("Right Stick:", rightMotor);
+            telemetry.update();
+            drive.setPowers(leftMotor, rightMotor);
+        }
         while (opModeIsActive() && (runtime.seconds() <= 1)) {
             leftMotor  = 1;
-            rightMotor = -1;
-            telemetry.addData("Left Power", leftMotor);
-            telemetry.addData("Right Power", rightMotor);
+            rightMotor = 1;
+            telemetry.addData("Left Power:", leftMotor);
+            telemetry.addData("Right Stick:", rightMotor);
             telemetry.update();
             drive.setPowers(leftMotor, rightMotor);
         }
         leftMotor = 0;
         rightMotor = 0;
         drive.setPowers(leftMotor, rightMotor);
-        telemetry.addData("Left Power", leftMotor);
-        telemetry.addData("Right Power", rightMotor);
+        telemetry.addData("Left Power:", leftMotor);
+        telemetry.addData("Right Stick:", rightMotor);
         telemetry.update();
     }
 }

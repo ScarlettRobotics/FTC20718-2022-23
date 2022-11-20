@@ -29,18 +29,14 @@ public class TankDrive2p extends OpMode {
 
     @Override
     public void loop() {
+        telemetry.addData("STATUS: ", "Running");
         telemetry.update();
         //DriveTrain
         double left = -gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;
-        telemetry.addData("Left Wheel", left);
-        telemetry.addData("Right Wheel", -right);
+        telemetry.addData("Left Stick:", left);
+        telemetry.addData("Right Stick:", right);
         drive.setPowers(left, right);
-
-        //Slide
-        double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
-        telemetry.addData("Slide Power",slidePower);
-        slide.setSlidePower(slidePower);
 
         //Claw
         if (gamepad2.a){
@@ -48,8 +44,10 @@ public class TankDrive2p extends OpMode {
         } else if(gamepad2.b) {
             claw.clawClose();
         }
-        claw.telemetry(telemetry);
 
-
+        //Slide
+        double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
+        telemetry.addData("Slide Y:",slidePower);
+        slide.setSlidePower(slidePower);
     }
 }

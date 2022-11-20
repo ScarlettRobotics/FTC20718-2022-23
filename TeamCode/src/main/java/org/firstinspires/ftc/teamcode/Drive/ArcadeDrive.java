@@ -14,9 +14,6 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
 @TeleOp(name="WIP ArcadeDrive",group="auto")
 public class ArcadeDrive extends OpMode {
-    // Initialize claw variables
-    private Servo leftClaw = null;
-    private Servo rightClaw = null;
     // Initialize classes from other files
     DualMotorDrive drive;
     ClawCore claw;

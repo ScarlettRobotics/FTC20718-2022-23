@@ -15,8 +15,8 @@ public class ClawCore {
     }
 
     public void telemetry(Telemetry tem){
-        tem.addData("Claw Right POS:", rightClaw.getPosition());
-        tem.addData("Claw Left POS:", leftClaw.getPosition());
+        tem.addData("Claw Right POS", rightClaw.getPosition());
+        tem.addData("Claw Left POS", leftClaw.getPosition());
     }
 
 

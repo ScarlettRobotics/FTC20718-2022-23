@@ -14,9 +14,9 @@ public class ClawCore {
         leftClaw = hardwareMap.get(Servo.class, "claw_left");
     }
 
-    public void telemetry(Telemetry tem){
-        tem.addData("Claw Right POS", rightClaw.getPosition());
-        tem.addData("Claw Left POS", leftClaw.getPosition());
+    public void telemetry(Telemetry telemetry){
+        telemetry.addData("Claw Right POS", rightClaw.getPosition());
+        telemetry.addData("Claw Left POS", leftClaw.getPosition());
     }
 
 

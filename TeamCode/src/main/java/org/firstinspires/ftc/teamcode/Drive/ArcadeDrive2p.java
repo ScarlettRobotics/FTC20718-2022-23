@@ -33,7 +33,7 @@ public class ArcadeDrive2p extends OpMode {
 
     @Override
     public void loop() {
-        telemetry.addData("STATUS: ", "Running");
+        telemetry.addData("STATUS", "Running");
         telemetry.update();
         //DriveTrain
         double forward = -gamepad1.left_stick_y;

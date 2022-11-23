@@ -9,9 +9,15 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  * Handles inputs to the slide mechanism's motor.
  */
 public class SlideCore {
+    // Initialize DC motor variable
     private DcMotor slideMotor = null;
+<<<<<<< HEAD
 
     public SlideCore(HardwareMap hardwareMap) {
+=======
+    // Map DC motor variable to driver hub
+    public SlideCore (HardwareMap hardwareMap) {
+>>>>>>> ArcadeDrive-edits
         slideMotor = hardwareMap.get(DcMotor.class, "slide_motor");
         slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         slideMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -25,12 +31,18 @@ public class SlideCore {
      * if one were to use hard-coded literals for the button maps (i.e if pushed then set value to 1); it
      * makes it easy to implement if it were attached to an analog input.
      *
-     * @param slidePower Raw input power
+     * @param powerSlide Raw input power
      */
+<<<<<<< HEAD
     public void setSlidePower(double slidePower) {
+=======
+    public void setSlidePower(double powerSlide){
+>>>>>>> ArcadeDrive-edits
         double largest = 0.5;
-        largest = Math.max(largest, Math.abs(slidePower));
-        slideMotor.setPower((slidePower / largest));
+
+        // Takes the largest value out of 0.5 and powerSlide
+        largest = Math.max(largest, Math.abs(powerSlide));
+        slideMotor.setPower((powerSlide / largest));
     }
 
     public void telemetry(Telemetry telemetry, double slidePower) {

@@ -13,10 +13,12 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
  */
 @TeleOp(name = "TankDrive", group = "auto")
 public class TankDrive extends OpMode {
+    // Initialize classes from other files
     DualMotorDrive drive;
     ClawCore claw;
     SlideCore slide;
 
+    // Define classes from other files
     @Override
     public void init() {
         drive = new DualMotorDrive(hardwareMap);
@@ -31,24 +33,49 @@ public class TankDrive extends OpMode {
     @Override
     public void loop() {
         telemetry.update();
+<<<<<<< HEAD
         //DriveTrain
         double left = gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;
         drive.setPowers(left, right);
         drive.telemetry(telemetry, left, right);
+=======
 
-        //Claw
+        //// DRIVETRAIN
+        // Move left/right wheels based on left/right stick movement
+        double left = -gamepad1.left_stick_y;
+        double right = gamepad1.right_stick_y;
+        drive.setPowers(left, right);
+        // Debug info
+        telemetry.addData("Left Stick:", left);
+        telemetry.addData("Right Stick:", right);
+>>>>>>> ArcadeDrive-edits
+
+        //// CLAW
+        // Open/close claw if A/B is pressed (respectively)
         if (gamepad1.a) {
             claw.clawOpen();
         } else if (gamepad1.b) {
             claw.clawClose();
         }
+<<<<<<< HEAD
         claw.telemetry(telemetry);
 
         //Slide
         double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
         slide.setSlidePower(slidePower);
         slide.telemetry(telemetry, slidePower);
+=======
+        // Debug info
+        claw.telemetry(telemetry);
+
+        //// SLIDE
+        // Move slide based on LT/RT presses
+        double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
+        slide.setSlidePower(slidePower);
+        // Debug info
+        telemetry.addData("Slide Y:",slidePower);
+>>>>>>> ArcadeDrive-edits
 
     }
 }

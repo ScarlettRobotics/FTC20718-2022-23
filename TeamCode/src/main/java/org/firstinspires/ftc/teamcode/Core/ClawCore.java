@@ -9,33 +9,20 @@ public class ClawCore {
     // Initialize claw variables
     private Servo rightClaw = null;
     private Servo leftClaw = null;
-<<<<<<< HEAD
-    private boolean clawIsOpen = false; //stores the initial state of the claw.
-
-    public ClawCore(HardwareMap hardwareMap) {
-=======
     // Stores state of the claw
     private boolean clawIsOpen = false;
+    
     // Map claw variables to driver hub
-    public ClawCore (HardwareMap hardwareMap){
->>>>>>> ArcadeDrive-edits
+    public ClawCore (HardwareMap hardwareMap) {
         rightClaw = hardwareMap.get(Servo.class, "claw_right");
         leftClaw = hardwareMap.get(Servo.class, "claw_left");
     }
 
 
-<<<<<<< HEAD
-    /**
-     * clawToggle
-     * sets the claw to be in either open or closed position.
-     * the state of the claw is stored as a private field within the object instance. This ensures
-     * that the claw will still open and close even if it has been bumped or stressed to a different point.
-=======
     /** clawToggle
      *  Sets the claw to be in either open or closed position.
      *  The state of the claw is stored as a private field within the object instance. This ensures
      *  that the claw will still open and close even if it has been bumped or stressed to a different point.
->>>>>>> ArcadeDrive-edits
      */
     public void clawToggle() {
         if (clawIsOpen) {
@@ -45,15 +32,9 @@ public class ClawCore {
         }
     }
 
-<<<<<<< HEAD
-    /**
-     * clawOpen
-     * Opens the claw to a pre-set width.
-=======
 
     /** clawOpen
      *  Opens the claw to a pre-set width, then updates clawIsOpen.
->>>>>>> ArcadeDrive-edits
      */
     public void clawOpen() {
         rightClaw.setPosition(0.575);
@@ -61,14 +42,8 @@ public class ClawCore {
         clawIsOpen = true;
     }
 
-<<<<<<< HEAD
-    /**
-     * clawClose
-     * closes the claw to a pre-set width.
-=======
     /** clawClose
      *  Closes the claw to a pre-set width, then updates clawIsOpen.
->>>>>>> ArcadeDrive-edits
      */
     public void clawClose() {
         rightClaw.setPosition(0.67);

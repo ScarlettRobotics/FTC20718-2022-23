@@ -13,14 +13,9 @@ public class DualMotorDrive {
     // Initialize DC motor variables
     private DcMotor leftMotor;
     private DcMotor rightMotor;
-<<<<<<< HEAD
 
-
-    public DualMotorDrive(HardwareMap hardwareMap) {
-=======
     // Map DC motor variables to driver hub
     public DualMotorDrive (HardwareMap hardwareMap) {
->>>>>>> ArcadeDrive-edits
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
@@ -31,20 +26,11 @@ public class DualMotorDrive {
     }
 
 
-<<<<<<< HEAD
-    /**
-     * setPowers
-     * Ensures that the range of power sent to the motors is
-     *
-     * @param leftPower  - power sent to the left motor
-     * @param rightPower - power to the right motor
-=======
     /** setPowers
      * Sets the Ensures that the range of power sent to the motors is
      *
      * @param powerLeft - power sent to the left motor
      * @param powerRight - power to the right motor
->>>>>>> ArcadeDrive-edits
      */
     public void setPowers(double powerLeft, double powerRight) {
         double largest = 1.0;

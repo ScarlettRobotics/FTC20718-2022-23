@@ -11,13 +11,9 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
 public class SlideCore {
     // Initialize DC motor variable
     private DcMotor slideMotor = null;
-<<<<<<< HEAD
 
-    public SlideCore(HardwareMap hardwareMap) {
-=======
     // Map DC motor variable to driver hub
     public SlideCore (HardwareMap hardwareMap) {
->>>>>>> ArcadeDrive-edits
         slideMotor = hardwareMap.get(DcMotor.class, "slide_motor");
         slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         slideMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -33,11 +29,7 @@ public class SlideCore {
      *
      * @param powerSlide Raw input power
      */
-<<<<<<< HEAD
-    public void setSlidePower(double slidePower) {
-=======
     public void setSlidePower(double powerSlide){
->>>>>>> ArcadeDrive-edits
         double largest = 0.5;
 
         // Takes the largest value out of 0.5 and powerSlide

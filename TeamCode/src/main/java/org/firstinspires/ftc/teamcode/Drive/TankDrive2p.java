@@ -34,16 +34,6 @@ public class TankDrive2p extends OpMode {
     public void loop() {
         telemetry.addData("STATUS: ", "Running");
         telemetry.update();
-<<<<<<< HEAD
-        //DriveTrain
-        double left = gamepad1.left_stick_y;
-        double right = gamepad1.right_stick_y;
-        drive.setPowers(left, right);
-        drive.telemetry(telemetry, left, right);
-
-        //Claw
-        if (gamepad2.a) {
-=======
 
         //// DRIVETRAIN
         // Move left/right wheels based on left/right stick movement
@@ -57,7 +47,6 @@ public class TankDrive2p extends OpMode {
         //// CLAW
         // Open/close claw if A/B is pressed (respectively)
         if (gamepad2.a){
->>>>>>> ArcadeDrive-edits
             claw.clawOpen();
         } else if (gamepad2.b) {
             claw.clawClose();
@@ -65,12 +54,6 @@ public class TankDrive2p extends OpMode {
         // Debug info
         claw.telemetry(telemetry);
 
-<<<<<<< HEAD
-        //Slide
-        double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
-        slide.setSlidePower(slidePower);
-        slide.telemetry(telemetry, slidePower);
-=======
         //// SLIDE
         // Move slide based on LT/RT pressees
         double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
@@ -78,6 +61,5 @@ public class TankDrive2p extends OpMode {
         // Debug info
         telemetry.addData("Slide Power",slidePower);
 
->>>>>>> ArcadeDrive-edits
     }
 }

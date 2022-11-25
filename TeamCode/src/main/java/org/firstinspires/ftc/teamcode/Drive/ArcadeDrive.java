@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.Core.SlideCore;
  * Arcade driving, similar to playing a racing game.
  */
 
-@TeleOp(name = "WIP ArcadeDrive", group = "auto")
+@TeleOp(name = "ArcadeDrive", group = "auto")
 public class ArcadeDrive extends OpMode {
     // Initialize classes from other files
     DualMotorDrive drive;

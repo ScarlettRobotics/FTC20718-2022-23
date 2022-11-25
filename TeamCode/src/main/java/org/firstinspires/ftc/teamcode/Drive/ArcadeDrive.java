@@ -52,12 +52,12 @@ public class ArcadeDrive extends OpMode {
         } else if (gamepad1.b) {
             claw.clawClose();
         }
+        claw.telemetry(telemetry);
 
         //// SLIDE
         // Move slide based on LT/RT presses
         double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
         slide.setSlidePower(slidePower);
-        // Debug info
-        telemetry.addData("Slide Y:",slidePower);
+        slide.telemetry(telemetry, slidePower);
     }
 }

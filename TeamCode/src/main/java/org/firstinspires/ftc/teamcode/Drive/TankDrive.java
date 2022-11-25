@@ -39,9 +39,7 @@ public class TankDrive extends OpMode {
         double left = -gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;
         drive.setPowers(left, right);
-        // Debug info
-        telemetry.addData("Left Stick:", left);
-        telemetry.addData("Right Stick:", right);
+        drive.telemetry(telemetry, left, right);
 
         //// CLAW
         // Open/close claw if A/B is pressed (respectively)
@@ -50,15 +48,12 @@ public class TankDrive extends OpMode {
         } else if (gamepad1.b) {
             claw.clawClose();
         }
-        // Debug info
         claw.telemetry(telemetry);
 
         //// SLIDE
         // Move slide based on LT/RT presses
         double slidePower = (-gamepad1.left_trigger + gamepad1.right_trigger);
         slide.setSlidePower(slidePower);
-        // Debug info
-        telemetry.addData("Slide Y:",slidePower);
-
+        slide.telemetry(telemetry, slidePower);
     }
 }

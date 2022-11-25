@@ -41,14 +41,14 @@ public class ArcadeDrive2p extends OpMode {
         // Move drivetrain based on left stick movement
         double forward = -gamepad1.left_stick_y;
         double right = gamepad1.left_stick_x;
-        drive.setPowers(forward + right, -1 * (forward - right) );
+        drive.setPowers(forward + right, -1 * (forward - right));
         // Debug info
         telemetry.addData("Stick X:", forward);
         telemetry.addData("Stick Y:", right);
 
         //// CLAW
         // Open/close claw if A/B is pressed (respectively)
-        if (gamepad2.a){
+        if (gamepad2.a) {
             claw.clawOpen();
         } else if (gamepad2.b) {
             claw.clawClose();
@@ -59,8 +59,6 @@ public class ArcadeDrive2p extends OpMode {
         // Move slide based on LT/RT presses
         double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
         slide.setSlidePower(slidePower);
-        // Debug info
-        telemetry.addData("Slide Y:",slidePower);
-
+        slide.telemetry(telemetry, slidePower);
     }
 }

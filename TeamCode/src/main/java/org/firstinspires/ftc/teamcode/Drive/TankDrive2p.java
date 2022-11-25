@@ -40,18 +40,15 @@ public class TankDrive2p extends OpMode {
         double left = -gamepad1.left_stick_y;
         double right = gamepad1.right_stick_y;
         drive.setPowers(left, right);
-        // Debug info
-        telemetry.addData("Left Wheel", left);
-        telemetry.addData("Right Wheel", -right);
+        drive.telemetry(telemetry, left, right);
 
         //// CLAW
         // Open/close claw if A/B is pressed (respectively)
-        if (gamepad2.a){
+        if (gamepad2.a) {
             claw.clawOpen();
         } else if (gamepad2.b) {
             claw.clawClose();
         }
-        // Debug info
         claw.telemetry(telemetry);
 
         //// SLIDE
@@ -59,7 +56,6 @@ public class TankDrive2p extends OpMode {
         double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
         slide.setSlidePower(slidePower);
         // Debug info
-        telemetry.addData("Slide Power",slidePower);
-
+        slide.telemetry(telemetry, slidePower);
     }
 }

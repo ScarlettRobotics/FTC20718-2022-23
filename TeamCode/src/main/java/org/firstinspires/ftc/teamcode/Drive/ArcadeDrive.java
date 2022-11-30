@@ -31,8 +31,8 @@ public class ArcadeDrive extends OpMode {
         telemetry.addData("FTC Team #", "20718");
     }
 
-    @Override
-    public void loop() { //START - after start button is pushed
+    public
+    @Override void loop() { //START - after start button is pushed
         telemetry.addData("STATUS: ", "Running");
         telemetry.update();
 

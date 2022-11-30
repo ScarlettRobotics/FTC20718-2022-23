@@ -19,7 +19,6 @@ public class TankDrive2p extends OpMode {
     ClawCore claw;
     SlideCore slide;
 
-    // Define classes from other files
     @Override
     public void init() {
         drive = new DualMotorDrive(hardwareMap);
@@ -28,6 +27,7 @@ public class TankDrive2p extends OpMode {
         telemetry.addData("DRIVE MODE: ", "TankDrive 2 Player");
         telemetry.addData("STATUS: ", "Initialized");
         telemetry.addData("FTC Team #", "20718");
+        telemetry.update();
     }
 
     @Override
@@ -55,7 +55,6 @@ public class TankDrive2p extends OpMode {
         // Move slide based on LT/RT pressees
         double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
         slide.setSlidePower(slidePower);
-        // Debug info
         slide.telemetry(telemetry, slidePower);
     }
 }

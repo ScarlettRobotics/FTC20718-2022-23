@@ -10,8 +10,7 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  */
 public class SlideCore {
     // Initialize DC motor variable
-    private DcMotor slideMotor = null;
-
+    private DcMotor slideMotor;
     // Map DC motor variable to driver hub
     public SlideCore (HardwareMap hardwareMap) {
         slideMotor = hardwareMap.get(DcMotor.class, "slide_motor");
@@ -38,7 +37,7 @@ public class SlideCore {
     }
 
     public void telemetry(Telemetry telemetry, double slidePower) {
-        telemetry.addData("Slide Y:", slidePower);
+        telemetry.addData("Slide Y", slidePower);
     }
 
 }

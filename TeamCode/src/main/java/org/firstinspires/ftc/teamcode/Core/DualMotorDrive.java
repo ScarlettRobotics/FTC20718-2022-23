@@ -10,9 +10,18 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  * Runs the drivetrain of the robot.
  */
 public class DualMotorDrive {
+
+    //private fields
+    private DcMotor leftMotor = null;
+    private DcMotor rightMotor = null;
+
+
+    public void init (HardwareMap hardwareMap) {
+
     // Initialize DC motor variables
     private DcMotor leftMotor;
     private DcMotor rightMotor;
+
 
     // Map DC motor variables to driver hub
     public DualMotorDrive (HardwareMap hardwareMap) {
@@ -35,9 +44,17 @@ public class DualMotorDrive {
     public void setPowers(double powerLeft, double powerRight) {
         double largest = 1.0;
 
+
+        largest = Math.max(largest, Math.abs(leftPower));
+        largest = Math.max(largest, Math.abs(rightPower));
+
+        leftMotor.setPower(leftPower / largest);
+        rightMotor.setPower(rightPower / largest);
+
         // Takes the largest value out of 1.0, powerLeft, and powerRight
         largest = Math.max(largest, Math.abs(powerLeft));
         largest = Math.max(largest, Math.abs(powerRight));
+
 
         // Sets the power of the motors in relation to largest
         leftMotor.setPower(powerLeft / largest);

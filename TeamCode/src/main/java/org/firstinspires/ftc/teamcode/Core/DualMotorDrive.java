@@ -16,15 +16,8 @@ public class DualMotorDrive {
     private DcMotor rightMotor = null;
 
 
-    public void init (HardwareMap hardwareMap) {
-
-    // Initialize DC motor variables
-    private DcMotor leftMotor;
-    private DcMotor rightMotor;
-
-
     // Map DC motor variables to driver hub
-    public DualMotorDrive (HardwareMap hardwareMap) {
+    public DualMotorDrive(HardwareMap hardwareMap) {
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
@@ -35,21 +28,15 @@ public class DualMotorDrive {
     }
 
 
-    /** setPowers
+    /**
+     * setPowers
      * Sets the Ensures that the range of power sent to the motors is
      *
-     * @param powerLeft - power sent to the left motor
+     * @param powerLeft  - power sent to the left motor
      * @param powerRight - power to the right motor
      */
     public void setPowers(double powerLeft, double powerRight) {
         double largest = 1.0;
-
-
-        largest = Math.max(largest, Math.abs(leftPower));
-        largest = Math.max(largest, Math.abs(rightPower));
-
-        leftMotor.setPower(leftPower / largest);
-        rightMotor.setPower(rightPower / largest);
 
         // Takes the largest value out of 1.0, powerLeft, and powerRight
         largest = Math.max(largest, Math.abs(powerLeft));
@@ -66,3 +53,5 @@ public class DualMotorDrive {
         telemetry.addData("Right Stick:", rightPower);
     }
 }
+
+

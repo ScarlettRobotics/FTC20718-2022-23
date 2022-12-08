@@ -29,7 +29,7 @@ public class SlideCore {
      * @param powerSlide Raw input power
      */
     public void setSlidePower(double powerSlide){
-        double largest = 0.5;
+        double largest = 1.0;
 
         // Takes the largest value out of 0.5 and powerSlide
         largest = Math.max(largest, Math.abs(powerSlide));

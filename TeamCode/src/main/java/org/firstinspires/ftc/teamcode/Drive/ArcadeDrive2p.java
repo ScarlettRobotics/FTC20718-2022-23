@@ -1,37 +1,18 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Servo;
-import org.firstinspires.ftc.teamcode.Core.ClawCore;
-import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
-import org.firstinspires.ftc.teamcode.Core.SlideCore;
+import org.firstinspires.ftc.teamcode.Core.UpperSystemManager;
 
 
 /**
  * ArcadeDrive 2 Player
  * Designed for driving to be on controller 1, upper systems on controller 2.
  * Arcade driving, similar to playing a racing game.
+ * See ClawSlideManager.java for information regarding the claw and slide.
  */
 
 @TeleOp(name = "ArcadeDrive2P", group = "auto")
-public class ArcadeDrive2p extends OpMode {
-    // Initialize classes from other files
-    DualMotorDrive drive;
-    ClawCore claw;
-    SlideCore slide;
-
-    // Define classes from other files
-    @Override
-    public void init() {
-        drive = new DualMotorDrive(hardwareMap);
-        claw = new ClawCore(hardwareMap);
-        slide = new SlideCore(hardwareMap);
-        telemetry.addData("DRIVE MODE", "Arcade 2 Player");
-        telemetry.addData("STATUS", "Initialized");
-        telemetry.addData("FTC Team #", "20718");
-    }
-
+public class ArcadeDrive2p extends UpperSystemManager {
     @Override
     public void loop() {
         telemetry.addData("STATUS", "Running");
@@ -46,19 +27,7 @@ public class ArcadeDrive2p extends OpMode {
         telemetry.addData("Stick X:", forward);
         telemetry.addData("Stick Y:", right);
 
-        //// CLAW
-        // Open/close claw if A/B is pressed (respectively)
-        if (gamepad2.a) {
-            claw.clawOpen();
-        } else if (gamepad2.b) {
-            claw.clawClose();
-        }
-        claw.telemetry(telemetry);
-
-        //// SLIDE
-        // Move slide based on LT/RT presses
-        double slidePower = (-gamepad2.left_trigger + gamepad2.right_trigger);
-        slide.setSlidePower(slidePower);
-        slide.telemetry(telemetry, slidePower);
+        updateClaw(2);
+        updateSlide(2);
     }
 }

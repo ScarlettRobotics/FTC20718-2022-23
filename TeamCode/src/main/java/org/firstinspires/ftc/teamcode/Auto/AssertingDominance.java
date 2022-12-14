@@ -37,7 +37,7 @@ public class AssertingDominance extends LinearOpMode {
 
         runtime.reset(); //reset timer
         // Set the slide to fully move up for the duration of the auto period
-        slide.setSlidePower(1);
+        //slide.setSlidePower(1);
         wait(2);
         while (opModeIsActive() && (runtime.seconds() <= 20)) {
             // Toggles the claw every 100 ms (open -> closed, or closed -> open)
@@ -45,7 +45,7 @@ public class AssertingDominance extends LinearOpMode {
             wait(100);
         }
         // Reset slide power
-        slide.setSlidePower(0);
+        //slide.setSlidePower(0);
 
         telemetry.update();
     }

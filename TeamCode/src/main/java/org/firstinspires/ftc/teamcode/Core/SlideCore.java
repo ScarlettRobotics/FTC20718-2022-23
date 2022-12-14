@@ -10,34 +10,45 @@ import org.firstinspires.ftc.robotcore.external.Telemetry;
  */
 public class SlideCore {
     // Initialize DC motor variable
-    private DcMotor slideMotor;
+    protected final DcMotor slideMotor;
+    private final int[] junctionHeights = {0, 20, 40, 60}; //TODO ADJUST VALUES
+    // Height that needs to be moved to move to the next cone in a cone stack
+    private final int coneHeight = 3; //TODO ADJUST VALUE
+
     // Map DC motor variable to driver hub
     public SlideCore (HardwareMap hardwareMap) {
         slideMotor = hardwareMap.get(DcMotor.class, "slide_motor");
-        slideMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        slideMotor.setTargetPosition(1);
+        slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         slideMotor.setDirection(DcMotor.Direction.REVERSE);
     }
 
 
-    /**
-     * setSlidePower
-     * <p>
-     * Sets the power to the motor. Ensures it is between -1, and 1. Although this is made somewhat redundant
-     * if one were to use hard-coded literals for the button maps (i.e if pushed then set value to 1); it
-     * makes it easy to implement if it were attached to an analog input.
-     *
-     * @param powerSlide Raw input power
-     */
-    public void setSlidePower(double powerSlide){
-        double largest = 1.0;
-
-        // Takes the largest value out of 0.5 and powerSlide
-        largest = Math.max(largest, Math.abs(powerSlide));
-        slideMotor.setPower((powerSlide / largest));
+    /* Moves the slide to the height of a junction. Input options for junctionType are ground, low, medium, and high.*/
+    public void moveToJunction(final String junctionType) {
+        switch(junctionType.toLowerCase()) {
+            case "ground":
+                adjustHeight((junctionHeights[0] - slideMotor.getCurrentPosition()) % coneHeight + 1);
+                return;
+            case "low":
+                adjustHeight((junctionHeights[1] - slideMotor.getCurrentPosition()) % coneHeight + 1);
+                return;
+            case "medium":
+                adjustHeight((junctionHeights[2] - slideMotor.getCurrentPosition()) % coneHeight + 1);
+                return;
+            case "high":
+                adjustHeight((junctionHeights[3] - slideMotor.getCurrentPosition()) % coneHeight + 1);
+        }
     }
 
-    public void telemetry(Telemetry telemetry, double slidePower) {
-        telemetry.addData("Slide Y", slidePower);
+    /* Changes the height of the slide up by 'conesMoved' cones.
+    * If conesMoves is negative, the slide moves down by the specified cone amount. */
+    public void adjustHeight(final int conesMoved) {
+        slideMotor.setTargetPosition(conesMoved * coneHeight);
+    }
+
+    public void telemetry(Telemetry telemetry) {
+        telemetry.addData("Slide Y", slideMotor.getCurrentPosition());
     }
 
 }

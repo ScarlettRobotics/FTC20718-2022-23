@@ -68,9 +68,9 @@ public abstract class UpperSystemManager extends OpMode {
                 }
             case 2:
                 // Open/close claw if A/B is pressed (respectively)
-                if (gamepad2.a) {
+                if (gamepad2.left_bumper) {
                     claw.clawOpen();
-                } else if (gamepad2.b) {
+                } else if (gamepad2.right_bumper) {
                     claw.clawClose();
                 }
         }

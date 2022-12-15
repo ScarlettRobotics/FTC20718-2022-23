@@ -28,16 +28,16 @@ public class SlideCore {
     public void moveToJunction(final String junctionType) {
         switch(junctionType.toLowerCase()) {
             case "ground":
-                adjustHeight((junctionHeights[0] - slideMotor.getCurrentPosition()) % coneHeight + 1);
+                adjustHeight((junctionHeights[0] - slideMotor.getCurrentPosition()) / coneHeight + 1);
                 return;
             case "low":
-                adjustHeight((junctionHeights[1] - slideMotor.getCurrentPosition()) % coneHeight + 1);
+                adjustHeight((junctionHeights[1] - slideMotor.getCurrentPosition()) / coneHeight + 1);
                 return;
             case "medium":
-                adjustHeight((junctionHeights[2] - slideMotor.getCurrentPosition()) % coneHeight + 1);
+                adjustHeight((junctionHeights[2] - slideMotor.getCurrentPosition()) / coneHeight + 1);
                 return;
             case "high":
-                adjustHeight((junctionHeights[3] - slideMotor.getCurrentPosition()) % coneHeight + 1);
+                adjustHeight((junctionHeights[3] - slideMotor.getCurrentPosition()) / coneHeight + 1);
         }
     }
 

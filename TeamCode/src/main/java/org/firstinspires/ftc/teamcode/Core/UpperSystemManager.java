@@ -20,8 +20,6 @@ public abstract class UpperSystemManager extends OpMode {
         slide = new SlideCore(hardwareMap);
         // Move slide to the ground position
         slide.moveToJunction("GROUND");
-        slide.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        slide.slideMotor.setPower(1);
         // Telemetry
         telemetry.addData("STATUS: ", "Initialized"); // the FTC equivalent to println()
         telemetry.addData("FTC Team #", "20718");

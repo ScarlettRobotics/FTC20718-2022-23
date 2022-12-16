@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Core;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
+import com.qualcomm.robotcore.hardware.DcMotor;
 
 public abstract class UpperSystemManager extends OpMode {
     // Initialize claw and slide classes
@@ -17,6 +18,10 @@ public abstract class UpperSystemManager extends OpMode {
         drive = new DualMotorDrive(hardwareMap);
         claw = new ClawCore(hardwareMap);
         slide = new SlideCore(hardwareMap);
+        // Move slide to the ground position
+        slide.moveToJunction("ground");
+        slide.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        slide.slideMotor.setPower(1);
         // Telemetry
         telemetry.addData("STATUS: ", "Initialized"); // the FTC equivalent to println()
         telemetry.addData("FTC Team #", "20718");
@@ -24,15 +29,16 @@ public abstract class UpperSystemManager extends OpMode {
 
 
     /* Moves the slide based on gamepad presses */
-    protected void updateSlide(final int playerOp) {
-        switch (playerOp) {
+    protected void updateSlide(final int controllerNum) {
+        switch (controllerNum) {
             case 1:
                 // Set to specific set heights
-                if (gamepad1.a) slide.moveToJunction("ground");
-                if (gamepad1.x) slide.moveToJunction("low");
-                if (gamepad1.y) slide.moveToJunction("medium");
-                if (gamepad1.b) slide.moveToJunction("high");
+                if (gamepad1.a) slide.moveToJunction("GROUND");
+                if (gamepad1.x) slide.moveToJunction("LOW");
+                if (gamepad1.y) slide.moveToJunction("MEDIUM");
+                if (gamepad1.b) slide.moveToJunction("HIGH");
                 // Move by a cone height
+                // If pgamepad isn't included, the code in the conditional will run every frame instead of once on a button press.
                 if (gamepad1.dpad_up && !pgamepad_dpad_up) slide.adjustHeight(1);
                 if (gamepad1.dpad_down && !pgamepad_dpad_down) slide.adjustHeight(-1);
                 // Update previous gamepad presses
@@ -41,11 +47,12 @@ public abstract class UpperSystemManager extends OpMode {
                 break;
             case 2:
                 // Set to specific set heights
-                if (gamepad2.a) slide.moveToJunction("ground");
-                if (gamepad2.x) slide.moveToJunction("low");
-                if (gamepad2.y) slide.moveToJunction("medium");
-                if (gamepad2.b) slide.moveToJunction("high");
-                // Move by a cone height
+                if (gamepad2.a) slide.moveToJunction("GROUND");
+                if (gamepad2.x) slide.moveToJunction("LOW");
+                if (gamepad2.y) slide.moveToJunction("MEDIUM");
+                if (gamepad2.b) slide.moveToJunction("HIGH");
+                // Move by a cone height.
+                // If pgamepad isn't included, the code in the conditional will run every frame instead of once on a button press.
                 if (gamepad2.dpad_up && !pgamepad_dpad_up) slide.adjustHeight(1);
                 if (gamepad2.dpad_down && !pgamepad_dpad_down) slide.adjustHeight(-1);
                 // Update previous gamepad presses
@@ -56,9 +63,9 @@ public abstract class UpperSystemManager extends OpMode {
         slide.telemetry(telemetry);
     }
 
-    /* Updates claw position based on gamepad presses */
-    protected void updateClaw(final int playerOp) {
-        switch (playerOp) {
+    /* Updates claw state based on gamepad presses. */
+    protected void updateClaw(final int controllerNum) {
+        switch (controllerNum) {
             case 1:
                 // Open/close claw if A/B is pressed (respectively)
                 if (gamepad1.left_bumper) {

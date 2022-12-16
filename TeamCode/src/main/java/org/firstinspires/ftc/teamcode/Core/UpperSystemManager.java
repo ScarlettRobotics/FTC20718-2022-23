@@ -19,7 +19,7 @@ public abstract class UpperSystemManager extends OpMode {
         claw = new ClawCore(hardwareMap);
         slide = new SlideCore(hardwareMap);
         // Move slide to the ground position
-        slide.moveToJunction("ground");
+        slide.moveToJunction("GROUND");
         slide.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         slide.slideMotor.setPower(1);
         // Telemetry

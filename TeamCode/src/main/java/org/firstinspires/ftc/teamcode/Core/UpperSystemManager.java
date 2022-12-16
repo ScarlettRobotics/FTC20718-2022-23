@@ -60,6 +60,7 @@ public abstract class UpperSystemManager extends OpMode {
                 pgamepad_dpad_down = gamepad2.dpad_down;
                 break;
         }
+        slide.update();
         slide.telemetry(telemetry);
     }
 

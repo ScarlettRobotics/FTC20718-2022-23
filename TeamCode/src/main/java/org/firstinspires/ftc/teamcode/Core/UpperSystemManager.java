@@ -18,10 +18,6 @@ public abstract class UpperSystemManager extends OpMode {
         drive = new DualMotorDrive(hardwareMap);
         claw = new ClawCore(hardwareMap);
         slide = new SlideCore(hardwareMap);
-        // Move slide to the ground position
-        slide.moveToJunction("GROUND");
-        slide.slideMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        slide.slideMotor.setPower(1);
         // Telemetry
         telemetry.addData("STATUS: ", "Initialized"); // the FTC equivalent to println()
         telemetry.addData("FTC Team #", "20718");
@@ -38,8 +34,8 @@ public abstract class UpperSystemManager extends OpMode {
                 if (gamepad1.y) slide.moveToJunction("MEDIUM");
                 if (gamepad1.b) slide.moveToJunction("HIGH");
                 // rushed code
-                if (gamepad2.dpad_up) slide.linearAdjustHeight(-3);
-                if (gamepad2.dpad_down) slide.linearAdjustHeight(3);
+                if (gamepad2.dpad_up) slide.linearAdjustHeight(-30);
+                if (gamepad2.dpad_down) slide.linearAdjustHeight(30);
                 // Move by a cone height.
                 // If pgamepad isn't included, the code in the conditional will run every frame instead of once on a button press.
                 /*if (gamepad2.dpad_up && !pgamepad_dpad_up) slide.adjustHeight(1);
@@ -55,8 +51,8 @@ public abstract class UpperSystemManager extends OpMode {
                 if (gamepad2.y) slide.moveToJunction("MEDIUM");
                 if (gamepad2.b) slide.moveToJunction("HIGH");
                 // rushed code
-                if (gamepad2.dpad_up) slide.linearAdjustHeight(-3);
-                if (gamepad2.dpad_down) slide.linearAdjustHeight(3);
+                if (gamepad2.dpad_up) slide.linearAdjustHeight(-30);
+                if (gamepad2.dpad_down) slide.linearAdjustHeight(30);
                 // Move by a cone height.
                 // If pgamepad isn't included, the code in the conditional will run every frame instead of once on a button press.
                 /*if (gamepad2.dpad_up && !pgamepad_dpad_up) slide.adjustHeight(1);

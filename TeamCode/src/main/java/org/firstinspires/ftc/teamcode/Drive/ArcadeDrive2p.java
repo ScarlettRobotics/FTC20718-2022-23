@@ -20,8 +20,8 @@ public class ArcadeDrive2p extends UpperSystemManager {
 
         //// DRIVETRAIN
         // Move drivetrain based on left stick movement
-        double forward = -gamepad1.left_stick_y;
-        double right = gamepad1.left_stick_x;
+        double forward = gamepad1.left_stick_y;
+        double right = -gamepad1.left_stick_x;
         drive.setPowers(forward + right, -1 * (forward - right));
         // Debug info
         telemetry.addData("Stick X:", forward);

@@ -12,7 +12,7 @@ public class SlideCore {
     // Initialize DC motor variable
     protected final DcMotor slideMotor;
     // Height of each junction. This array is ordered ground -> low -> medium -> high junction.
-    private final int[] junctionHeights = {20, -2400, -4200, -5100}; //TODO ADJUST VALUES
+    private final int[] junctionHeights = {-1200, -3300, -5000, -5100}; //TODO ADJUST VALUES
     // The goal position for the slide to move to
     protected int goalPosition = junctionHeights[0];
 
@@ -44,7 +44,7 @@ public class SlideCore {
     public void adjustHeight(final int conesMoved) {
         // Height that needs to be moved to move to the next cone in a cone stack
         //TODO ADJUST VALUE
-        final int coneHeight = -260;
+        final int coneHeight = -520;
         goalPosition += (coneHeight*conesMoved);
     }
 

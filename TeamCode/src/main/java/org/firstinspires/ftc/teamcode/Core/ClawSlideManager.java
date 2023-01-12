@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.teamcode.Core;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
-public abstract class UpperSystemManager extends OpMode {
+public abstract class ClawSlideManager extends OpMode {
     // Initialize claw and slide classes
     protected DualMotorDrive drive;
     protected ClawCore claw;
@@ -34,8 +33,8 @@ public abstract class UpperSystemManager extends OpMode {
                 if (gamepad1.y) slide.moveToJunction("MEDIUM");
                 if (gamepad1.b) slide.moveToJunction("HIGH");
                 // rushed code
-                if (gamepad2.dpad_up) slide.linearAdjustHeight(-30);
-                if (gamepad2.dpad_down) slide.linearAdjustHeight(30);
+                if (gamepad1.dpad_up) slide.linearAdjustHeight(-30);
+                if (gamepad1.dpad_down) slide.linearAdjustHeight(30);
                 // Move by a cone height.
                 // If pgamepad isn't included, the code in the conditional will run every frame instead of once on a button press.
                 /*if (gamepad2.dpad_up && !pgamepad_dpad_up) slide.adjustHeight(1);

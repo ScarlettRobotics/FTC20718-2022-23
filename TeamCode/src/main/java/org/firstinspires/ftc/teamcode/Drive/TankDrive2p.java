@@ -15,7 +15,6 @@ public class TankDrive2p extends ClawSlideManager {
     @Override
     public void loop() {
         telemetry.addData("STATUS: ", "Running");
-        telemetry.update();
 
         //// DRIVETRAIN
         // Move left/right wheels based on left/right stick movement

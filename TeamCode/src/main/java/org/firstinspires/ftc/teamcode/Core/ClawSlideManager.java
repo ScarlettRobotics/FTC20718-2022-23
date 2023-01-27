@@ -71,16 +71,16 @@ public abstract class ClawSlideManager extends OpMode {
             case 1:
                 // Open/close claw if A/B is pressed (respectively)
                 if (gamepad1.left_bumper) {
-                    claw.clawOpen();
+                    claw.open();
                 } else if (gamepad1.right_bumper) {
-                    claw.clawClose();
+                    claw.close();
                 }
             case 2:
                 // Open/close claw if A/B is pressed (respectively)
                 if (gamepad2.left_bumper) {
-                    claw.clawOpen();
+                    claw.open();
                 } else if (gamepad2.right_bumper) {
-                    claw.clawClose();
+                    claw.close();
                 }
         }
         claw.telemetry(telemetry);

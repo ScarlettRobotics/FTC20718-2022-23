@@ -41,7 +41,7 @@ public class AssertingDominance extends LinearOpMode {
         wait(2);
         while (opModeIsActive() && (runtime.seconds() <= 20)) {
             // Toggles the claw every 100 ms (open -> closed, or closed -> open)
-            claw.clawToggle();
+            claw.toggle();
             wait(100);
         }
         // Reset slide power

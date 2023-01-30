@@ -28,7 +28,7 @@ public abstract class ClawSlideManager extends OpMode {
         switch (controllerNum) {
             case 1:
                 // Set to specific set heights
-                if (gamepad1.a) slide.moveToJunction("GROUND");
+                /*if (gamepad1.a) slide.moveToJunction("GROUND");
                 if (gamepad1.x) slide.moveToJunction("LOW");
                 if (gamepad1.y) slide.moveToJunction("MEDIUM");
                 if (gamepad1.b) slide.moveToJunction("HIGH");
@@ -45,7 +45,8 @@ public abstract class ClawSlideManager extends OpMode {
                 break;
             case 2:
                 // Set to specific set heights
-                if (gamepad2.a) slide.moveToJunction("GROUND");
+                slide.slideManual((-gamepad2.left_trigger+gamepad2.right_trigger));
+                /*if (gamepad2.a) slide.moveToJunction("GROUND");
                 if (gamepad2.x) slide.moveToJunction("LOW");
                 if (gamepad2.y) slide.moveToJunction("MEDIUM");
                 if (gamepad2.b) slide.moveToJunction("HIGH");
@@ -61,7 +62,7 @@ public abstract class ClawSlideManager extends OpMode {
                 pgamepad_dpad_down = gamepad2.dpad_down;*/
                 break;
         }
-        slide.update();
+        //slide.update();
         slide.telemetry(telemetry);
     }
 

@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
 
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
  */
 
 @TeleOp(name = "ArcadeDrive2P", group = "auto")
+@Disabled
 public class ArcadeDrive2p extends ClawSlideManager {
     @Override
     public void loop() {

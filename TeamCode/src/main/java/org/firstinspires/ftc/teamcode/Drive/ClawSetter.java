@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
 
@@ -11,6 +12,8 @@ import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
  * This happens responsively, and the user can see the servo position through telemetry.
  * This currently does not work. */
 @TeleOp(name = "ClawSetter", group = "auto")
+@Disabled
+
 public class ClawSetter extends ClawSlideManager {
     @Override
     public void loop() {

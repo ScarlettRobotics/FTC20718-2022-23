@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import org.firstinspires.ftc.teamcode.Core.UpperSystemManager;
+import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
 
 
 /**
@@ -11,11 +11,10 @@ import org.firstinspires.ftc.teamcode.Core.UpperSystemManager;
  * See ClawSlideManager.java for information regarding the claw and slide.
  */
 @TeleOp(name = "TankDrive2P", group = "auto")
-public class TankDrive2p extends UpperSystemManager {
+public class TankDrive2p extends ClawSlideManager {
     @Override
     public void loop() {
         telemetry.addData("STATUS: ", "Running");
-        telemetry.update();
 
         //// DRIVETRAIN
         // Move left/right wheels based on left/right stick movement

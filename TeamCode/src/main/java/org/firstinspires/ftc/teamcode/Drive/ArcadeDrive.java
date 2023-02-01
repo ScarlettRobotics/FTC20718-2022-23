@@ -1,7 +1,8 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import org.firstinspires.ftc.teamcode.Core.UpperSystemManager;
+import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
 
 
 /**
@@ -11,7 +12,8 @@ import org.firstinspires.ftc.teamcode.Core.UpperSystemManager;
  */
 
 @TeleOp(name = "ArcadeDrive", group = "auto")
-public class ArcadeDrive extends UpperSystemManager {
+@Disabled
+public class ArcadeDrive extends ClawSlideManager {
     public
     @Override void loop() { //START - after start button is pushed
         telemetry.addData("STATUS: ", "Running");

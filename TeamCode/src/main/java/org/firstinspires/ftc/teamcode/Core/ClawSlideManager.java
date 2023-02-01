@@ -1,9 +1,8 @@
 package org.firstinspires.ftc.teamcode.Core;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
 
-public abstract class UpperSystemManager extends OpMode {
+public abstract class ClawSlideManager extends OpMode {
     // Initialize claw and slide classes
     protected DualMotorDrive drive;
     protected ClawCore claw;
@@ -31,7 +30,7 @@ public abstract class UpperSystemManager extends OpMode {
         switch (controllerNum) {
             case 1:
                 // Set to specific set heights
-                if (gamepad1.a) slide.moveToJunction("GROUND");
+                /*if (gamepad1.a) slide.moveToJunction("GROUND");
                 if (gamepad1.x) slide.moveToJunction("LOW");
                 if (gamepad1.y) slide.moveToJunction("MEDIUM");
                 if (gamepad1.b) slide.moveToJunction("HIGH");
@@ -45,7 +44,8 @@ public abstract class UpperSystemManager extends OpMode {
                 break;
             case 2:
                 // Set to specific set heights
-                if (gamepad2.a) slide.moveToJunction("GROUND");
+                slide.slideManual((-gamepad2.left_trigger+gamepad2.right_trigger));
+                /*if (gamepad2.a) slide.moveToJunction("GROUND");
                 if (gamepad2.x) slide.moveToJunction("LOW");
                 if (gamepad2.y) slide.moveToJunction("MEDIUM");
                 if (gamepad2.b) slide.moveToJunction("HIGH");
@@ -58,7 +58,7 @@ public abstract class UpperSystemManager extends OpMode {
                 pgamepad_dpad_down = gamepad2.dpad_down;
                 break;
         }
-        slide.update();
+        //slide.update();
         slide.telemetry(telemetry);
     }
 
@@ -68,16 +68,16 @@ public abstract class UpperSystemManager extends OpMode {
             case 1:
                 // Open/close claw if A/B is pressed (respectively)
                 if (gamepad1.left_bumper) {
-                    claw.clawOpen();
+                    claw.open();
                 } else if (gamepad1.right_bumper) {
-                    claw.clawClose();
+                    claw.close();
                 }
             case 2:
                 // Open/close claw if A/B is pressed (respectively)
                 if (gamepad2.left_bumper) {
-                    claw.clawOpen();
+                    claw.open();
                 } else if (gamepad2.right_bumper) {
-                    claw.clawClose();
+                    claw.close();
                 }
         }
         claw.telemetry(telemetry);

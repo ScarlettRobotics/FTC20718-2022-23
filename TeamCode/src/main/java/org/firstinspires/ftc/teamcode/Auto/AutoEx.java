@@ -2,9 +2,7 @@ package org.firstinspires.ftc.teamcode.Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.Core.ClawCore;
 import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
 import org.firstinspires.ftc.teamcode.Core.SlideCore;
@@ -39,21 +37,21 @@ public class AutoEx extends LinearOpMode {
         while (opModeIsActive() && (runtime.seconds() <= 0.5)) {
             leftMotor = 0.5;
             rightMotor = 0.75;
-            drive.setPowers(leftMotor, rightMotor);
-            drive.telemetry(telemetry, leftMotor, rightMotor);
+            drive.setMoveVelocity(leftMotor, rightMotor);
+            drive.telemetry(telemetry);
             telemetry.update();
         }
         while (opModeIsActive() && (runtime.seconds() <= 1)) {
             leftMotor = 1;
             rightMotor = 1;
-            drive.setPowers(leftMotor, rightMotor);
-            drive.telemetry(telemetry, leftMotor, rightMotor);
+            drive.setMoveVelocity(leftMotor, rightMotor);
+            drive.telemetry(telemetry);
             telemetry.update();
         }
         leftMotor = 0;
         rightMotor = 0;
-        drive.setPowers(leftMotor, rightMotor);
-        drive.telemetry(telemetry, leftMotor, rightMotor);
+        drive.setMoveVelocity(leftMotor, rightMotor);
+        drive.telemetry(telemetry);
         telemetry.update();
     }
 }

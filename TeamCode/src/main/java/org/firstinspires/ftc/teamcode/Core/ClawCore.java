@@ -18,12 +18,6 @@ public class ClawCore {
     }
 
 
-    /** Moves the servo by the given amount. */
-    public void move(double left, double right) {
-        leftClaw.setPosition(leftClaw.getPosition() + left);
-        rightClaw.setPosition(rightClaw.getPosition() + right);
-    }
-
 
     /** toggle()
      *  Sets the claw to be in either open or closed position.

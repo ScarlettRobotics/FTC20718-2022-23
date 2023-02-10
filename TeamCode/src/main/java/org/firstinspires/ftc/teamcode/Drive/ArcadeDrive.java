@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
 
@@ -9,6 +10,8 @@ import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
  * Arcade driving, similar to playing a racing game.
  * See ClawSlideManager.java for information regarding the claw and slide.
  */
+
+@Disabled
 
 @TeleOp(name = "ArcadeDrive", group = "auto")
 public class ArcadeDrive extends ClawSlideManager {

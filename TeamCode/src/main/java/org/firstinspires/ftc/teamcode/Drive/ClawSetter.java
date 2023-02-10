@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
 
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.Core.ClawSlideManager;
  * The joystick controls are used to move the left/right servo, respectively.
  * This happens responsively, and the user can see the servo position through telemetry.
  * This currently does not work. */
+@Disabled
 @TeleOp(name = "ClawSetter", group = "auto")
 public class ClawSetter extends ClawSlideManager {
     @Override

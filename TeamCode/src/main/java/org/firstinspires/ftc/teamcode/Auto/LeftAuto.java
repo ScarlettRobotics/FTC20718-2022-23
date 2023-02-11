@@ -71,7 +71,6 @@ public class LeftAuto extends LinearOpMode {
             if(autoEventHandler.actionOccurred(4, runtime.time())) {
                 slide.slideManual(-0.25);
             }
-            sleep(2000);
 
             //Drop Cone
             if(autoEventHandler.actionOccurred(5, runtime.time())){
@@ -153,6 +152,7 @@ public class LeftAuto extends LinearOpMode {
         telemetry.addData("Elapsed time", "%4.2f", runtime.time());
         drive.telemetry(telemetry);
         sleeveDetector.telemetry(telemetry);
+        autoEventHandler.telemetry(telemetry);
         telemetry.update();
     }
 }

@@ -22,6 +22,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class LeftAuto extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
 
+    private AutoEventHandler autoEventHandler;
     protected DualMotorDrive drive;
     protected ClawCore claw;
     protected SlideCore slide;
@@ -39,69 +40,80 @@ public class LeftAuto extends LinearOpMode {
         int sleevePos = sleeveDetector.updateSleevePos();
 
             // run until the end of match (driver pressed STOP)
-                drive.update();
-                // Telemetry
-                addTelemetry(telemetry);
-                telemetry.update();
+        while(opModeIsActive()) {
+            //Constantly Ran
+            drive.update();
+            addTelemetry(telemetry);
+            telemetry.update();
 
+            if (autoEventHandler.actionOccurred(0, runtime.time())) {
                 claw.close();
-                sleep(500);
-                //proceed forward
-                drive.moveInches(52,52);
-                drive.update();
-                drive.telemetry(telemetry);
-                telemetry.update();
+            }
 
+            //proceed forward
+            if (autoEventHandler.actionOccurred(1, runtime.time())) {
+                drive.moveInches(-100, -100);
+            }
 
-                sleep(1000);
-
-                //raise arm
+            //raise arm
+            if(autoEventHandler.actionOccurred(2, runtime.time())){
                 slide.slideManual(1);
                 //turn right to post
-                drive.moveInches(-5, 5);
-                drive.update();
+                drive.moveInches(5, -5);
+            }
 
-                //forward to post
-                sleep(500);
-                drive.moveInches(10,10);
-                drive.update();
+            //forward to post
+            if(autoEventHandler.actionOccurred(3, runtime.time())) {
+                drive.moveInches(-10, -10);
+            }
 
-                //slide down slightly
-                sleep(5000);
+            //slide down slightly
+            if(autoEventHandler.actionOccurred(4, runtime.time())) {
                 slide.slideManual(-0.25);
+            }
+            sleep(2000);
 
-                sleep(2000);
-                //Drop Cone
+            //Drop Cone
+            if(autoEventHandler.actionOccurred(5, runtime.time())){
                 claw.open();
+            }
 
-                sleep(1000);
-                // Raise claw
+            // Raise claw
+            if(autoEventHandler.actionOccurred(6, runtime.time())){
                 slide.slideManual(1);
+            }
 
-                sleep(2000);
+            //Reverse
+            if(autoEventHandler.actionOccurred(7,runtime.time())) {
+                drive.moveInches(10, 10);
+            }
+            if(autoEventHandler.actionOccurred(8, runtime.time())){
+                drive.moveInches(-5, 5);
+            }
 
-                //Reverse
-                drive.moveInches(-10,-10);
-                drive.update();
-                sleep(500);
-                drive.moveInches(5,-5);
-                drive.update();
+            //Lower slide
+            if(autoEventHandler.actionOccurred(9,runtime.time())){
+                slide.slideManual(-0.9);
+            }
+            if(autoEventHandler.actionOccurred(10,runtime.time())){
+                slide.slideManual(-0.5);
+            }
 
-                //Lower slide
-                slide.slideManual(-1);
-                sleep(2500);
+            if(autoEventHandler.actionOccurred(11, runtime.time())){
                 slide.slideManual(0);
+            }
 
-                //PARK
+            //PARK
 
-                //switch state based on cam
-                //park 1
+            //switch state based on cam
+            //park 1
 
-                //park 2
+            //park 2
 
-                //park 3
+            //park 3
 
-                //fin - burn rest of time standing still
+            //fin - burn rest of time standing still
+        }
 
 
     }
@@ -119,6 +131,21 @@ public class LeftAuto extends LinearOpMode {
 
         telemetry.addData("Status", "Initialized");
         telemetry.update();
+
+        //AutoEventHandler
+        autoEventHandler = new AutoEventHandler();
+        autoEventHandler.addDetectionTime(0);
+        autoEventHandler.addDetectionTime(500);
+        autoEventHandler.addDetectionTime(1000);
+        autoEventHandler.addDetectionTime(10000);
+        autoEventHandler.addDetectionTime(15000);
+        autoEventHandler.addDetectionTime(17000);
+        autoEventHandler.addDetectionTime(18000);
+        autoEventHandler.addDetectionTime(20000);
+        autoEventHandler.addDetectionTime(20500);
+        autoEventHandler.addDetectionTime(21000);
+        autoEventHandler.addDetectionTime(22000);
+        autoEventHandler.addDetectionTime(25500);
     }
 
     private void addTelemetry(Telemetry telemetry) {

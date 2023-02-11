@@ -57,7 +57,7 @@ public class LeftAuto extends LinearOpMode {
 
             //raise arm
             if(autoEventHandler.actionOccurred(2, runtime.time())){
-                slide.slideManual(1);
+                slide.slideManual(0.85);
                 //turn right to post
                 drive.moveInches(5, -5);
             }
@@ -80,7 +80,7 @@ public class LeftAuto extends LinearOpMode {
 
             // Raise claw
             if(autoEventHandler.actionOccurred(6, runtime.time())){
-                slide.slideManual(1);
+                slide.slideManual(0.85);
             }
 
             //Reverse
@@ -93,7 +93,7 @@ public class LeftAuto extends LinearOpMode {
 
             //Lower slide
             if(autoEventHandler.actionOccurred(9,runtime.time())){
-                slide.slideManual(-0.9);
+                slide.slideManual(-0.75);
             }
             if(autoEventHandler.actionOccurred(10,runtime.time())){
                 slide.slideManual(-0.5);

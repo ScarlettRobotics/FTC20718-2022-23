@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Drive;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Core.SystemsManager;
 
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.Core.SystemsManager;
  * See ClawSlideManager.java for information regarding the claw and slide.
  */
 @TeleOp(name = "TankDrive", group = "auto")
+@Disabled
 public class TankDrive extends SystemsManager {
     @Override
     public void loop() {

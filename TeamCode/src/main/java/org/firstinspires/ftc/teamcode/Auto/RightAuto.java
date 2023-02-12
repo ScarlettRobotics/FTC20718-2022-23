@@ -11,15 +11,20 @@ package org.firstinspires.ftc.teamcode.Auto;
  *  3: strafe 36 in/12 in */
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.Core.*;
-import org.firstinspires.ftc.teamcode.Core.CV.*;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.Core.AutoEventHandler;
+import org.firstinspires.ftc.teamcode.Core.CV.SleeveDetector;
+import org.firstinspires.ftc.teamcode.Core.CV.WebcamCore;
+import org.firstinspires.ftc.teamcode.Core.ClawCore;
+import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
+import org.firstinspires.ftc.teamcode.Core.SlideCore;
+@Autonomous(name="Right Auto", group="Auto")
+@Disabled
 
-@Autonomous(name="Left Auto", group="Auto")
-
-public class LeftAuto extends LinearOpMode {
+public class RightAuto extends LinearOpMode{
     private ElapsedTime runtime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
 
     private AutoEventHandler autoEventHandler;
@@ -60,13 +65,13 @@ public class LeftAuto extends LinearOpMode {
             //raise arm
             if(autoEventHandler.actionOccurred(2, runtime.time())){
                 slide.slideManual(0.85);
-                //turn right to post
-                drive.moveInches(-0.35, 0.35);
+                //turn left to post
+                drive.moveInches(0.4, -0.4);
             }
 
             //forward to post
             if(autoEventHandler.actionOccurred(3, runtime.time())) {
-                drive.moveInches(-13.75, -13.75);
+                drive.moveInches(-14, -14);
             }
 
             //slide down slightly
@@ -91,12 +96,12 @@ public class LeftAuto extends LinearOpMode {
             }
 
             if(autoEventHandler.actionOccurred(8, runtime.time())){
-                drive.moveInches(-5, 5);
+                drive.moveInches(5, -5);
+                claw.close();
             }
 
             //Lower slide
             if(autoEventHandler.actionOccurred(9,runtime.time())){
-                claw.close();
                 slide.slideManual(-0.5);
             }
             if(autoEventHandler.actionOccurred(10,runtime.time())){
@@ -167,7 +172,7 @@ public class LeftAuto extends LinearOpMode {
         autoEventHandler.addDetectionTime(22000);
         autoEventHandler.addDetectionTime(23500);
         autoEventHandler.addDetectionTime(25000);
-        autoEventHandler.addDetectionTime(27750);
+        autoEventHandler.addDetectionTime(27500);
         autoEventHandler.addDetectionTime(29000);
     }
 

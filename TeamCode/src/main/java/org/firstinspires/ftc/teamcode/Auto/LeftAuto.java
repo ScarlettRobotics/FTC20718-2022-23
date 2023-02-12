@@ -38,8 +38,10 @@ public class LeftAuto extends LinearOpMode {
         runtime.reset();
 
         int sleevePos = sleeveDetector.updateSleevePos();
+        sleevePos = 0;
 
-            // run until the end of match (driver pressed STOP)
+
+        // run until the end of match (driver pressed STOP)
         while(opModeIsActive()) {
             //Constantly Ran
             drive.update();
@@ -52,19 +54,19 @@ public class LeftAuto extends LinearOpMode {
 
             //proceed forward
             if (autoEventHandler.actionOccurred(1, runtime.time())) {
-                drive.moveInches(-100, -100);
+                drive.moveInches(-55, -45);
             }
 
             //raise arm
             if(autoEventHandler.actionOccurred(2, runtime.time())){
                 slide.slideManual(0.85);
                 //turn right to post
-                drive.moveInches(5, -5);
+                drive.moveInches(-0.5, 0.5);
             }
 
             //forward to post
             if(autoEventHandler.actionOccurred(3, runtime.time())) {
-                drive.moveInches(-10, -10);
+                drive.moveInches(-14, -14);
             }
 
             //slide down slightly
@@ -82,20 +84,22 @@ public class LeftAuto extends LinearOpMode {
                 slide.slideManual(0.85);
             }
 
+
             //Reverse
             if(autoEventHandler.actionOccurred(7,runtime.time())) {
-                drive.moveInches(10, 10);
+                drive.moveInches(15, 15);
             }
+
             if(autoEventHandler.actionOccurred(8, runtime.time())){
-                drive.moveInches(-5, 5);
+                drive.moveInches(1, -1);
             }
 
             //Lower slide
             if(autoEventHandler.actionOccurred(9,runtime.time())){
-                slide.slideManual(-0.75);
+                slide.slideManual(-0.5);
             }
             if(autoEventHandler.actionOccurred(10,runtime.time())){
-                slide.slideManual(-0.5);
+                slide.slideManual(-0.4);
             }
 
             if(autoEventHandler.actionOccurred(11, runtime.time())){
@@ -105,6 +109,24 @@ public class LeftAuto extends LinearOpMode {
             //PARK
 
             //switch state based on cam
+            switch(sleevePos){
+                case 1:
+                    if(autoEventHandler.actionOccurred(12, runtime.time())){
+                        drive.moveInches(20,20);
+                    }
+                case 2:
+                    if(autoEventHandler.actionOccurred(12, runtime.time())){
+                        drive.moveInches(2,2);
+                    }
+                case 3:
+                    if(autoEventHandler.actionOccurred(12, runtime.time())){
+                        drive.moveInches(-10,-10);
+                    }
+                case 0:
+                    if(autoEventHandler.actionOccurred(12, runtime.time())){
+
+                    }
+            }
             //park 1
 
             //park 2
@@ -135,16 +157,17 @@ public class LeftAuto extends LinearOpMode {
         autoEventHandler = new AutoEventHandler();
         autoEventHandler.addDetectionTime(0);
         autoEventHandler.addDetectionTime(500);
-        autoEventHandler.addDetectionTime(1000);
+        autoEventHandler.addDetectionTime(6000);
         autoEventHandler.addDetectionTime(10000);
         autoEventHandler.addDetectionTime(15000);
         autoEventHandler.addDetectionTime(17000);
         autoEventHandler.addDetectionTime(18000);
         autoEventHandler.addDetectionTime(20000);
-        autoEventHandler.addDetectionTime(20500);
         autoEventHandler.addDetectionTime(21000);
-        autoEventHandler.addDetectionTime(22000);
-        autoEventHandler.addDetectionTime(25500);
+        autoEventHandler.addDetectionTime(22500);
+        autoEventHandler.addDetectionTime(23500);
+        autoEventHandler.addDetectionTime(24250);
+        autoEventHandler.addDetectionTime(26000);
     }
 
     private void addTelemetry(Telemetry telemetry) {

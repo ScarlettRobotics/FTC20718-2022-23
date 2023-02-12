@@ -12,14 +12,18 @@ package org.firstinspires.ftc.teamcode.Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.Core.*;
-import org.firstinspires.ftc.teamcode.Core.CV.*;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import org.firstinspires.ftc.robotcore.external.Telemetry;
+import org.firstinspires.ftc.teamcode.Core.AutoEventHandler;
+import org.firstinspires.ftc.teamcode.Core.CV.SleeveDetector;
+import org.firstinspires.ftc.teamcode.Core.CV.WebcamCore;
+import org.firstinspires.ftc.teamcode.Core.ClawCore;
+import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
+import org.firstinspires.ftc.teamcode.Core.SlideCore;
 
-@Autonomous(name="Left Auto", group="Auto")
+@Autonomous(name="Forward Auto", group="Auto")
 
-public class LeftAuto extends LinearOpMode {
+public class ForwardAuto extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
 
     private AutoEventHandler autoEventHandler;
@@ -56,85 +60,6 @@ public class LeftAuto extends LinearOpMode {
             if (autoEventHandler.actionOccurred(1, runtime.time())) {
                 drive.moveInches(-55, -45);
             }
-
-            //raise arm
-            if(autoEventHandler.actionOccurred(2, runtime.time())){
-                slide.slideManual(0.85);
-                //turn right to post
-                drive.moveInches(-0.325, 0.325);
-            }
-
-            //forward to post
-            if(autoEventHandler.actionOccurred(3, runtime.time())) {
-                drive.moveInches(-13.85, -13.85);
-            }
-
-            //slide down slightly
-            if(autoEventHandler.actionOccurred(4, runtime.time())) {
-                slide.slideManual(-0.25);
-            }
-
-            //Drop Cone
-            if(autoEventHandler.actionOccurred(5, runtime.time())){
-                claw.open();
-            }
-
-            // Raise claw
-            if(autoEventHandler.actionOccurred(6, runtime.time())){
-                slide.slideManual(0.85);
-            }
-
-
-            //Reverse
-            if(autoEventHandler.actionOccurred(7,runtime.time())) {
-                drive.moveInches(14, 14);
-            }
-
-            if(autoEventHandler.actionOccurred(8, runtime.time())){
-                drive.moveInches(-5, 5);
-            }
-
-            //Lower slide
-            if(autoEventHandler.actionOccurred(9,runtime.time())){
-                claw.close();
-                slide.slideManual(-0.5);
-            }
-            if(autoEventHandler.actionOccurred(10,runtime.time())){
-                slide.slideManual(-0.4);
-            }
-
-            if(autoEventHandler.actionOccurred(11, runtime.time())){
-                slide.slideManual(0);
-            }
-
-            //PARK
-
-            //switch state based on cam
-            switch(sleevePos){
-                case 1:
-                    if(autoEventHandler.actionOccurred(12, runtime.time())){
-                        drive.moveInches(20,20);
-                    }
-                case 2:
-                    if(autoEventHandler.actionOccurred(12, runtime.time())){
-                        drive.moveInches(2,2);
-                    }
-                case 3:
-                    if(autoEventHandler.actionOccurred(12, runtime.time())){
-                        drive.moveInches(-10,-10);
-                    }
-                case 0:
-                    if(autoEventHandler.actionOccurred(12, runtime.time())){
-
-                    }
-            }
-            //park 1
-
-            //park 2
-
-            //park 3
-
-            //fin - burn rest of time standing still
         }
 
 

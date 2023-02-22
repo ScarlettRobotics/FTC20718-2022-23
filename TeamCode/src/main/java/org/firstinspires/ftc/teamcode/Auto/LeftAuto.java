@@ -22,12 +22,13 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 public class LeftAuto extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
 
-    private AutoEventHandler autoEventHandler;
     protected DualMotorDrive drive;
     protected ClawCore claw;
     protected SlideCore slide;
     protected WebcamCore webcam;
+    protected CameraServoCore cameraServo;
 
+    protected AutoEventHandler autoEventHandler;
     protected SleeveDetector sleeveDetector;
 
     @Override
@@ -37,9 +38,7 @@ public class LeftAuto extends LinearOpMode {
         waitForStart();
         runtime.reset();
 
-        int sleevePos = sleeveDetector.updateSleevePos();
-        sleevePos = 0;
-
+        sleeveDetector.updateSleevePos(webcam.pipeline.getHsvFilterPink(), webcam.pipeline.getHsvFilterGreen(), webcam.pipeline.getHsvFilterOrange());
 
         // run until the end of match (driver pressed STOP)
         while(opModeIsActive()) {
@@ -110,7 +109,7 @@ public class LeftAuto extends LinearOpMode {
             //PARK
 
             //switch state based on cam
-            switch(sleevePos){
+            switch(sleeveDetector.getSleevePos()){
                 case 1:
                     if(autoEventHandler.actionOccurred(12, runtime.time())){
                         drive.moveInches(20,20);

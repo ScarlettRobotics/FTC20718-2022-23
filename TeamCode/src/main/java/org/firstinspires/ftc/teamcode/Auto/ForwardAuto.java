@@ -41,9 +41,7 @@ public class ForwardAuto extends LinearOpMode {
         waitForStart();
         runtime.reset();
 
-        int sleevePos = sleeveDetector.updateSleevePos();
-        sleevePos = 0;
-
+        sleeveDetector.updateSleevePos(webcam.pipeline.getHsvFilterPink(), webcam.pipeline.getHsvFilterGreen(), webcam.pipeline.getHsvFilterOrange());
 
         // run until the end of match (driver pressed STOP)
         while(opModeIsActive()) {

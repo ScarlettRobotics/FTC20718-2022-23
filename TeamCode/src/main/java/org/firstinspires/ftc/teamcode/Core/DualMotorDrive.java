@@ -1,32 +1,32 @@
 package org.firstinspires.ftc.teamcode.Core;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
 
-/**
- * DualMotorDrive
- * Runs the drivetrain of the robot.
- */
+/*** Manages the drivetrain of the robot.
+ * "Dual" refers to the two wheels in the drivetrain. */
 public class DualMotorDrive {
-
-    //private fields
-    private DcMotor leftMotor = null;
-    private DcMotor rightMotor = null;
-
+    //// CLASS VARIABLES
+    private DcMotor leftMotor;
+    private DcMotor rightMotor;
     //// CONSTANT VARIABLES
     private final int ENCODER_VALUES_PER_ROTATION = 1400;
     // TODO ADJUST VALUE
     private final double INCHES_PER_ROTATION = 12.36;
 
+    /** Init */
 
-    // Map DC motor variables to driver hub
-    public DualMotorDrive(HardwareMap hardwareMap) {
+    //Initializes 2 DcMotor Objects for the 2 wheels and sets movement directions
+    public DualMotorDrive (HardwareMap hardwareMap) {
+        // Map DcMotor variables to hardwareMap
         leftMotor = hardwareMap.get(DcMotor.class, "left_motor");
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
-        // Sets
-        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+        // Set motor movement directions
+        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -36,19 +36,10 @@ public class DualMotorDrive {
     }
 
 
-    /**
-     * setPowers
-     * Sets the Ensures that the range of power sent to the motors is
-     *
-     * @param powerLeft  - power sent to the left motor
-     * @param powerRight - power to the right motor
-     */
-
-    /**
-     * setMoveVelocity
+    /** setMoveVelocity
      * Uses RUN_USING_ENCODER to move all motors by an inputted velocity
      *
-     * @param leftVelocity  - power sent to the left motor
+     * @param leftVelocity - power sent to the left motor
      * @param rightVelocity - power sent to the right motor
      */
     public void setMoveVelocity(double leftVelocity, double rightVelocity) {
@@ -66,17 +57,13 @@ public class DualMotorDrive {
         rightMotor.setPower(rightVelocity);
     }
 
-    /**
-     * Converts inches to encoder values using constants
-     * MAY BE UNRELIABLE, AS FRICTION IS UNACCOUNTED FOR
-     */
+    /** Converts inches to encoder values using constants
+     * MAY BE UNRELIABLE, AS FRICTION IS UNACCOUNTED FOR */
     private int inchesToEncoderValues(double inches) {
         return Math.toIntExact(Math.round(inches * ENCODER_VALUES_PER_ROTATION / INCHES_PER_ROTATION));
     }
 
-    /**
-     * Uses RUN_TO_POSITION to move the motors by a distance.
-     */
+    /** Uses RUN_TO_POSITION to move the motors by a distance. */
     public void moveInches(double leftInches, double rightInches) {
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -88,9 +75,7 @@ public class DualMotorDrive {
         rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
     }
 
-    /**
-     * If the motors are in RUN_TO_POSITION, motors progress to their target position
-     */
+    /** If the motors are in RUN_TO_POSITION, motors progress to their target position */
     public void update() {
         if (leftMotor.getMode() == DcMotor.RunMode.RUN_TO_POSITION) {
             leftMotor.setTargetPosition(leftMotor.getTargetPosition());
@@ -101,21 +86,19 @@ public class DualMotorDrive {
     }
 
     public void telemetry(Telemetry telemetry) {
-        telemetry.addData("\nCurrent class:", "TriMotorDrive.java");
-        telemetry.addData("runMode:", leftMotor.getMode());
+        telemetry.addData("\nCurrent class", "TriMotorDrive.java");
+        telemetry.addData("runMode", leftMotor.getMode());
         if (leftMotor.getMode() == DcMotor.RunMode.RUN_USING_ENCODER) {
             telemetry.addData("Left Power",
                     "%4.2f", leftMotor.getPower());
-            telemetry.addData("Right Power:",
+            telemetry.addData("Right Power",
                     "%4.2f", rightMotor.getPower());
         }
         if (leftMotor.getMode() == DcMotor.RunMode.RUN_TO_POSITION) {
-            telemetry.addData("Left Position & Target:",
+            telemetry.addData("Left Position & Target",
                     "%d %d", leftMotor.getCurrentPosition(), leftMotor.getTargetPosition());
-            telemetry.addData("Right Position & Target:",
+            telemetry.addData("Right Position & Target",
                     "%d %d", rightMotor.getCurrentPosition(), rightMotor.getTargetPosition());
         }
     }
 }
-
-

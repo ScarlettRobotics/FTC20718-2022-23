@@ -1,38 +1,24 @@
 package org.firstinspires.ftc.teamcode.Auto;
 
-/** MOVEMENTS TO MAKE:
- * adjust to high junction
- * strafe 7 in
- * move 52 in forward
- * strafe 12 in
- * CASES:
- *  1: strafe 12 in/36 in
- *  2: strafe 12 in
- *  3: strafe 36 in/12 in */
-
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.util.ElapsedTime;
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.Core.AutoEventHandler;
-import org.firstinspires.ftc.teamcode.Core.CV.SleeveDetector;
-import org.firstinspires.ftc.teamcode.Core.CV.WebcamCore;
-import org.firstinspires.ftc.teamcode.Core.ClawCore;
-import org.firstinspires.ftc.teamcode.Core.DualMotorDrive;
-import org.firstinspires.ftc.teamcode.Core.SlideCore;
-@Autonomous(name="Right Auto", group="Auto")
-@Disabled
+import org.firstinspires.ftc.teamcode.Core.*;
+import org.firstinspires.ftc.teamcode.Core.CV.*;
+import com.qualcomm.robotcore.util.ElapsedTime;
 
-public class RightAuto extends LinearOpMode{
+@Autonomous(name="Right Auto", group="Auto")
+
+public class RightAuto extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime(ElapsedTime.Resolution.MILLISECONDS);
 
-    private AutoEventHandler autoEventHandler;
     protected DualMotorDrive drive;
     protected ClawCore claw;
     protected SlideCore slide;
     protected WebcamCore webcam;
+    protected CameraServoCore cameraServo;
 
+    protected AutoEventHandler autoEventHandler;
     protected SleeveDetector sleeveDetector;
 
     @Override
@@ -42,9 +28,7 @@ public class RightAuto extends LinearOpMode{
         waitForStart();
         runtime.reset();
 
-        int sleevePos = sleeveDetector.updateSleevePos();
-        sleevePos = 0;
-
+        sleeveDetector.updateSleevePos(webcam.pipeline.getHsvFilterPink(), webcam.pipeline.getHsvFilterGreen(), webcam.pipeline.getHsvFilterOrange());
 
         // run until the end of match (driver pressed STOP)
         while(opModeIsActive()) {
@@ -115,7 +99,7 @@ public class RightAuto extends LinearOpMode{
             //PARK
 
             //switch state based on cam
-            switch(sleevePos){
+            switch(sleeveDetector.getSleevePos()){
                 case 1:
                     if(autoEventHandler.actionOccurred(12, runtime.time())){
                         drive.moveInches(20,20);

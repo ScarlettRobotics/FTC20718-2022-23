@@ -25,7 +25,7 @@ public class DualMotorDrive {
         rightMotor = hardwareMap.get(DcMotor.class, "right_motor");
 
         // Set motor movement directions
-        leftMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftMotor.setDirection(DcMotorSimple.Direction.FORWARD);
         rightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
 
         leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);

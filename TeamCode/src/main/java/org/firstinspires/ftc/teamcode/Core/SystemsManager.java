@@ -109,13 +109,13 @@ public abstract class SystemsManager extends OpMode {
         switch(controllerNum) {
             case 1:
                 // Move left/right wheels based on left/right stick movement
-                forward = gamepad1.right_stick_y;
-                turn = gamepad1.left_stick_x;
+                forward = gamepad1.left_stick_y;
+                turn = gamepad1.right_stick_x;
                 break;
             case 2:
                 // Move left/right wheels based on left/right stick movement
-                forward = gamepad2.right_stick_y;
-                turn = gamepad2.left_stick_x;
+                forward = gamepad2.left_stick_y;
+                turn = gamepad2.right_stick_x;
                 break;
             default:
                 forward = 0;
